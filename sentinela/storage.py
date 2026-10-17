@@ -54,5 +54,3 @@ def was_alerted(db: sqlite3.Connection, product_id: str, price: Decimal) -> bool
 def mark_alerted(db: sqlite3.Connection, product_id: str, price: Decimal, now: datetime):
     db.execute("INSERT OR IGNORE INTO alerts VALUES (?, ?, ?)", (product_id, cents(price), now.isoformat()))
     db.commit()
-
-

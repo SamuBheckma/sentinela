@@ -15,5 +15,3 @@ def send_discord(session: requests.Session, webhook: str, product: Product, pric
     r.raise_for_status()
     if not 200 <= r.status_code < 300:
         raise requests.RequestException("Discord retornou uma resposta sem confirmação de sucesso.")
-
-
