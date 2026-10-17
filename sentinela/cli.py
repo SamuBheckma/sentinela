@@ -17,6 +17,7 @@ def main():
     options.add_argument("--dry-run", action="store_true", help="busca e avalia sem alterar arquivos nem publicar")
     options.add_argument("--check-config", action="store_true", help="valida configuração sem acessar rede ou banco")
     options.add_argument("--search", action="store_true", help="busca produtos e atualiza catálogo, sem publicar ou registrar preços")
+    parser.add_argument("--no-results", action="store_true", help="envia somente alertas de desconto, sem resumo da busca")
     parser.add_argument("--manual-only", action="store_true", help="usa apenas produtos cadastrados manualmente")
     args = parser.parse_args()
     if args.search and args.manual_only:
@@ -51,7 +52,7 @@ def main():
         elif args.search:
             logging.warning("Nenhuma busca habilitada.")
             return 1
-        summary = run(**vars(settings), dry_run=args.dry_run, products=products)
+        summary = run(**vars(settings), dry_run=args.dry_run, products=products, publish_results=not args.no_results)
         return max(summary.exit_code, int(discovery_failed))
     except (OSError, ValueError, sqlite3.Error) as exc:
         logging.error("Falha de configuração ou persistência (%s). Verifique .env, config/*.json e acesso aos dados.", type(exc).__name__)

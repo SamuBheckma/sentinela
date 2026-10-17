@@ -20,7 +20,8 @@ sentinela
 - `--check-config`: valida arquivos e ambiente sem acessar rede ou banco.
 - `--search`: procura produtos, mostra nomes e links e atualiza o catálogo. Não registra preços nem envia mensagens.
 - `--dry-run`: procura e consulta preços, avaliando o histórico em memória. Não altera catálogo ou banco e não publica.
-- Sem opções: procura produtos, atualiza catálogo, coleta preços, salva histórico e publica possíveis ofertas elegíveis.
+- Sem opções: procura produtos, atualiza catálogo, coleta preços, salva histórico, publica no Discord um resumo com preços e links dentro dos filtros e envia possíveis ofertas elegíveis.
+- `--no-results`: desativa o resumo da busca; mantém apenas alertas de desconto com histórico.
 - `--manual-only`: acompanha somente `config/products.json`, para quem quiser escolher produtos individualmente.
 
 Os mesmos comandos funcionam com `python -m sentinela.cli` no lugar de `sentinela`. A biblioteca `python-dotenv` carrega o arquivo `.env`; não existe um script local com esse nome.
@@ -61,7 +62,7 @@ O catálogo fica em `data/discovered.json`: produtos novos têm prioridade, e os
 4. **Enviar o projeto ao GitHub** e cadastrar o secret `DISCORD_WEBHOOK_URL` para executar o monitor automaticamente.
 5. **Acompanhar os logs** e conferir vendedor, variante, preço final e frete antes de comprar ou divulgar.
 
-A busca começa imediatamente. Os alertas de queda exigem histórico: por padrão, pelo menos **cinco observações anteriores**, **sete dias desde a primeira coleta** e **20% abaixo da mediana** de todas as observações anteriores do mesmo produto. Resultado encontrado não significa desconto confirmado. O preço anunciado pode depender de condições de pagamento que o bot não verifica. Na For Honor, a variante presente no link é mantida para separar tamanho/cor no histórico. Na Coturno Atalaia, o preço também pode ser lido de microdados estruturados da página, sempre verificando a URL canônica e a disponibilidade.
+A busca e o resumo no Discord começam imediatamente, desde que o webhook esteja configurado. Cada execução normal publica os resultados em mensagens divididas para respeitar os limites do Discord. Produtos sem preço utilizável, sem estoque ou fora da faixa não entram no resumo. As mensagens identificam os preços como observados, sem desconto verificado. Se não houver resultados elegíveis, é publicado um aviso. Os alertas de queda exigem histórico: por padrão, pelo menos **cinco observações anteriores**, **sete dias desde a primeira coleta** e **20% abaixo da mediana** de todas as observações anteriores do mesmo produto. Resultado encontrado não significa desconto confirmado. O preço anunciado pode depender de condições de pagamento que o bot não verifica. Na For Honor, a variante presente no link é mantida para separar tamanho/cor no histórico. Na Coturno Atalaia, o preço também pode ser lido de microdados estruturados da página, sempre verificando a URL canônica e a disponibilidade.
 
 ## Ambiente
 

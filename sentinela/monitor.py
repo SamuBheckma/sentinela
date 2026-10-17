@@ -9,7 +9,7 @@ import requests
 from .config import Product, load_products, validate_limits
 from .extraction import extract_price, is_unavailable
 from .money import brl
-from .notifications import send_discord
+from .notifications import send_discord, send_search_results
 from .storage import assess, connect, mark_alerted, record, was_alerted
 
 LOG = logging.getLogger(__name__)
@@ -23,10 +23,12 @@ class RunSummary:
     unavailable: int = 0
     alerts_sent: int = 0
     alerts_failed: int = 0
+    result_messages: int = 0
+    result_failures: int = 0
 
     @property
     def exit_code(self):
-        return 1 if not self.products or self.failed or self.alerts_failed else 0
+        return 1 if not self.products or self.failed or self.alerts_failed or self.result_failures else 0
 
 
 class ProductUnavailable(Exception):
@@ -46,7 +48,7 @@ def fetch_price(session: requests.Session, product: Product, timeout: int, user_
         return None
 
 
-def run(products_file: str, db_path: str, webhook: str | None, min_discount: Decimal, min_samples: int, min_days: int, timeout: int, user_agent: str, dry_run: bool = False, products: list[Product] | None = None) -> RunSummary:
+def run(products_file: str, db_path: str, webhook: str | None, min_discount: Decimal, min_samples: int, min_days: int, timeout: int, user_agent: str, dry_run: bool = False, products: list[Product] | None = None, publish_results: bool = False) -> RunSummary:
     validate_limits(min_discount, min_samples, min_days, timeout)
     products = load_products(products_file) if products is None else products
     summary = RunSummary(products=len(products))
@@ -54,6 +56,7 @@ def run(products_file: str, db_path: str, webhook: str | None, min_discount: Dec
         LOG.warning("Nenhum produto habilitado em %s. Configure URLs reais de produtos.", products_file)
         return summary
     now = datetime.now(timezone.utc)
+    results = []
     with closing(connect(db_path, dry_run=dry_run)) as db, requests.Session() as session:
         for product in products:
             try:
@@ -69,6 +72,8 @@ def run(products_file: str, db_path: str, webhook: str | None, min_discount: Dec
             summary.collected += 1
             within_budget = ((product.min_price_brl is None or price >= product.min_price_brl)
                              and (product.max_price_brl is None or price <= product.max_price_brl))
+            if within_budget:
+                results.append((product, price))
             result = assess(db, product.id, price, now, min_discount, min_samples, min_days) if within_budget else None
             if not within_budget:
                 LOG.info("%s: fora da faixa de preço configurada; sem alerta", product.id)
@@ -91,5 +96,16 @@ def run(products_file: str, db_path: str, webhook: str | None, min_discount: Dec
                         LOG.info("Alerta publicado: %s", product.id)
             if not dry_run:
                 record(db, product.id, price, now)
+        if publish_results and not dry_run:
+            if not webhook:
+                LOG.warning("Resumo da busca não enviado: DISCORD_WEBHOOK_URL não definido")
+            else:
+                status = f"{summary.collected} preços coletados; {len(results)} dentro dos filtros; {summary.unavailable} indisponíveis; {summary.failed} falhas de coleta"
+                try:
+                    summary.result_messages = send_search_results(session, webhook, results, timeout, status)
+                    LOG.info("Resumo da busca publicado no Discord: %d mensagens com %d produtos", summary.result_messages, len(results))
+                except (requests.RequestException, ValueError) as exc:
+                    summary.result_failures += 1
+                    LOG.error("Resumo da busca falhou no Discord (%s)", type(exc).__name__)
     LOG.info("Resumo: %d produtos, %d coletados, %d indisponíveis, %d falhas de coleta, %d alertas enviados, %d falhas de envio", summary.products, summary.collected, summary.unavailable, summary.failed, summary.alerts_sent, summary.alerts_failed)
     return summary
