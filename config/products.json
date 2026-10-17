@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "id": "exemplo-ssd",
+      "name": "SSD NVMe (substitua por um modelo real)",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/",
+      "enabled": false,
+      "shipping_brl": null
+    },
+    {
+      "id": "exemplo-equipamento",
+      "name": "Equipamento de campo (substitua por um produto real)",
+      "category": "militar",
+      "store": "Loja militar",
+      "url": "https://www.mercadolivre.com.br/",
+      "enabled": false,
+      "shipping_brl": null
+    }
+  ]
+}

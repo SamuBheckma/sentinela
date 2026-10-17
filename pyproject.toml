@@ -1,0 +1,19 @@
+[project]
+name = "sentinela-ofertas"
+version = "0.1.0"
+description = "Buscador de produtos e monitor de preços com histórico e alertas no Discord"
+requires-python = ">=3.11"
+dependencies = ["requests>=2.32,<3", "beautifulsoup4>=4.12,<5", "python-dotenv>=1,<2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+sentinela = "sentinela.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["sentinela*"]

@@ -1,0 +1,104 @@
+name: Sentinela monitor
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sentinela/**'
+      - 'config/**'
+      - 'pyproject.toml'
+      - '.github/workflows/monitor.yml'
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Como testar o Sentinela'
+        required: true
+        default: monitor
+        type: choice
+        options:
+          - monitor
+          - search
+          - dry-run
+permissions:
+  contents: write
+concurrency:
+  group: sentinela-monitor
+  cancel-in-progress: false
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar
+        run: pip install -e '.[dev]'
+      - name: Testar
+        run: pytest -q
+      - name: Buscar e monitorar
+        id: monitor
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          RUN_MODE: ${{ inputs.mode || 'monitor' }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "::warning::DISCORD_WEBHOOK_URL não configurado nos secrets; busca e histórico funcionam, mas alertas não serão publicados."
+          fi
+          python -m sentinela.cli --check-config
+          case "$RUN_MODE" in
+            search) python -m sentinela.cli --search ;;
+            dry-run) python -m sentinela.cli --dry-run ;;
+            monitor) python -m sentinela.cli ;;
+            *) echo "Modo inválido"; exit 2 ;;
+          esac
+      - name: Persistir histórico
+        if: ${{ always() }}
+        run: |
+          if [ -f data/history.sqlite3 ] || [ -f data/discovered.json ]; then
+            git config user.name "sentinela-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            if [ -f data/history.sqlite3 ]; then git add -f data/history.sqlite3; fi
+            if [ -f data/discovered.json ]; then git add -f data/discovered.json; fi
+            if ! git diff --cached --quiet; then
+              git commit -m "chore: atualizar histórico de preços [skip ci]"
+              git push
+            fi
+          fi
+      - name: Resumo e arquivos para inspeção
+        if: ${{ always() }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sqlite3
+          from pathlib import Path
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('## Sentinela\n\n')
+              catalog = Path('data/discovered.json')
+              if catalog.exists():
+                  products = json.loads(catalog.read_text())['products']
+                  summary.write(f'Produtos no catálogo: **{len(products)}**\n\n')
+                  for store in sorted({product['store'] for product in products}):
+                      summary.write(f"- {store}: {sum(p['store'] == store for p in products)} produtos\n")
+              database = Path('data/history.sqlite3')
+              if database.exists():
+                  with sqlite3.connect(database) as db:
+                      samples = db.execute('SELECT count(*) FROM prices').fetchone()[0]
+                      alerts = db.execute('SELECT count(*) FROM alerts').fetchone()[0]
+                  summary.write(f'\nAmostras de preço: **{samples}**. Alertas registrados: **{alerts}**.\n')
+              summary.write('\nConsulte os logs de busca/coleta para falhas ou páginas sem estoque.\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: sentinela-dados-${{ github.run_id }}
+          path: |
+            data/discovered.json
+            data/history.sqlite3
+          if-no-files-found: ignore
+          retention-days: 7

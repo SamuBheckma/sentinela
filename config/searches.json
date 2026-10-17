@@ -1,0 +1,222 @@
+{
+  "max_products": 60,
+  "notes": "Faixa de R$ 400 a R$ 1600 aplicada aos relógios para treino. Equipamentos de moto agrupados em militar por compatibilidade com as categorias atuais.",
+  "searches": [
+    {
+      "term": "ssd 240gb",
+      "category": "tecnologia",
+      "stores": [
+        "kabum"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "ssd 256gb",
+      "category": "tecnologia",
+      "stores": [
+        "kabum"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "ssd 500gb",
+      "category": "tecnologia",
+      "stores": [
+        "kabum"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "ssd 512gb",
+      "category": "tecnologia",
+      "stores": [
+        "kabum"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "ssd nvme",
+      "category": "tecnologia",
+      "stores": [
+        "kabum"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "placa mae",
+      "category": "tecnologia",
+      "stores": [
+        "kabum"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "controlador rgb",
+      "category": "tecnologia",
+      "stores": [
+        "kabum"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "console",
+      "category": "tecnologia",
+      "stores": [
+        "kabum"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "mi band",
+      "category": "tecnologia",
+      "stores": [
+        "kabum"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true,
+      "min_price_brl": 400,
+      "max_price_brl": 1600
+    },
+    {
+      "term": "xiaomi band",
+      "category": "tecnologia",
+      "stores": [
+        "kabum"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true,
+      "min_price_brl": 400,
+      "max_price_brl": 1600
+    },
+    {
+      "term": "samsung watch",
+      "category": "tecnologia",
+      "stores": [
+        "kabum"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true,
+      "min_price_brl": 400,
+      "max_price_brl": 1600
+    },
+    {
+      "term": "luva tatica",
+      "category": "militar",
+      "stores": [
+        "forhonor"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "combat",
+      "category": "militar",
+      "stores": [
+        "forhonor"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "atalaia",
+      "category": "militar",
+      "stores": [
+        "atalaia"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "coyote",
+      "category": "militar",
+      "stores": [
+        "forhonor"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "mochila",
+      "category": "militar",
+      "stores": [
+        "forhonor"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "colete",
+      "category": "militar",
+      "stores": [
+        "forhonor"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "molle",
+      "category": "militar",
+      "stores": [
+        "forhonor"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "jaqueta",
+      "category": "militar",
+      "stores": [
+        "tuttomoto"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "bota",
+      "category": "militar",
+      "stores": [
+        "tuttomoto"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    },
+    {
+      "term": "modular",
+      "category": "militar",
+      "stores": [
+        "forhonor"
+      ],
+      "limit": 3,
+      "exclude": [],
+      "enabled": true
+    }
+  ]
+}
