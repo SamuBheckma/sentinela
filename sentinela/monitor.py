@@ -7,7 +7,7 @@ from decimal import Decimal
 
 import requests
 from .config import Product, load_products, validate_limits
-from .extraction import extract_price
+from .extraction import extract_price, is_unavailable
 from .money import brl
 from .notifications import send_discord
 from .storage import assess, connect, mark_alerted, record, was_alerted
@@ -20,6 +20,7 @@ class RunSummary:
     products: int = 0
     collected: int = 0
     failed: int = 0
+    unavailable: int = 0
     alerts_sent: int = 0
     alerts_failed: int = 0
 
@@ -28,11 +29,18 @@ class RunSummary:
         return 1 if not self.products or self.failed or self.alerts_failed else 0
 
 
+class ProductUnavailable(Exception):
+    """A página identificada declara todas as ofertas indisponíveis."""
+
+
 def fetch_price(session: requests.Session, product: Product, timeout: int, user_agent: str) -> Decimal | None:
     try:
         response = session.get(product.url, timeout=timeout, headers={"User-Agent": user_agent, "Accept": "text/html"})
         response.raise_for_status()
-        return extract_price(response.text, product.url)
+        price = extract_price(response.text, product.url)
+        if price is None and is_unavailable(response.text, product.url):
+            raise ProductUnavailable
+        return price
     except (requests.RequestException, ValueError) as exc:
         LOG.warning("Falha na coleta de %s (%s)", product.id, type(exc).__name__)
         return None
@@ -48,7 +56,12 @@ def run(products_file: str, db_path: str, webhook: str | None, min_discount: Dec
     now = datetime.now(timezone.utc)
     with closing(connect(db_path, dry_run=dry_run)) as db, requests.Session() as session:
         for product in products:
-            price = fetch_price(session, product, timeout, user_agent)
+            try:
+                price = fetch_price(session, product, timeout, user_agent)
+            except ProductUnavailable:
+                summary.unavailable += 1
+                LOG.info("%s: ofertas declaradas indisponíveis; ignorado", product.id)
+                continue
             if price is None:
                 summary.failed += 1
                 LOG.warning("%s: preço BRL do produto não identificado; ignorado", product.id)
@@ -78,5 +91,5 @@ def run(products_file: str, db_path: str, webhook: str | None, min_discount: Dec
                         LOG.info("Alerta publicado: %s", product.id)
             if not dry_run:
                 record(db, product.id, price, now)
-    LOG.info("Resumo: %d produtos, %d coletados, %d falhas de coleta, %d alertas enviados, %d falhas de envio", summary.products, summary.collected, summary.failed, summary.alerts_sent, summary.alerts_failed)
+    LOG.info("Resumo: %d produtos, %d coletados, %d indisponíveis, %d falhas de coleta, %d alertas enviados, %d falhas de envio", summary.products, summary.collected, summary.unavailable, summary.failed, summary.alerts_sent, summary.alerts_failed)
     return summary

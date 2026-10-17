@@ -216,3 +216,29 @@ def test_discord_payload_and_redirect_handling():
     session.post.return_value.status_code = 302
     with pytest.raises(requests.RequestException):
         send_discord(session, 'unused', item, Decimal('75'), Decimal('100'), Decimal('.25'), 15)
+
+
+def test_declared_unavailability_does_not_fail_or_record(config_file, tmp_path, monkeypatch):
+    from sentinela.monitor import ProductUnavailable
+    def unavailable(*args):
+        raise ProductUnavailable
+    monkeypatch.setattr('sentinela.monitor.fetch_price', unavailable)
+    db_path = tmp_path / 'history.sqlite3'
+    summary = execute(config_file, db_path)
+    assert summary.unavailable == 1
+    assert summary.failed == 0
+    assert summary.exit_code == 0
+    db = connect(str(db_path))
+    assert db.execute('SELECT count(*) FROM prices').fetchone()[0] == 0
+    db.close()
+
+
+def test_unavailability_requires_product_identity_and_all_offers():
+    from sentinela.extraction import is_unavailable
+    data = product()
+    data['offers']['availability'] = 'https://schema.org/OutOfStock'
+    assert is_unavailable(html(data), data['url'])
+    assert not is_unavailable(html(data), 'https://loja.example/other')
+    assert not is_unavailable('<html>captcha</html>', data['url'])
+    data['offers'] = [data['offers'], offer()]
+    assert not is_unavailable(html(data), data['url'])

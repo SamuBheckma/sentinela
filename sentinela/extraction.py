@@ -58,7 +58,7 @@ def _offer_prices(value):
             yield from _offer_prices(offer.get("offers", []))
 
 
-def extract_price(html: str, product_url: str | None = None) -> Decimal | None:
+def _select_products(html: str, product_url: str | None = None) -> list[dict]:
     soup = BeautifulSoup(html, "html.parser")
     products = []
     for script in soup.find_all("script", type="application/ld+json"):
@@ -86,12 +86,23 @@ def extract_price(html: str, product_url: str | None = None) -> Decimal | None:
                 matches.append(product)
         # Sem identificação explícita não atribuímos preços à URL monitorada.
         if not matches:
-            return None
+            return []
         products = matches
     elif len(products) != 1:
-        return None
+        return []
+    return products
+
+
+def extract_price(html: str, product_url: str | None = None) -> Decimal | None:
+    products = _select_products(html, product_url)
     prices = [price for product in products for price in _offer_prices(product["offers"])]
     return min(prices) if prices else None
+
+
+def is_unavailable(html: str, product_url: str) -> bool:
+    products = _select_products(html, product_url)
+    offers = [node for product in products for node in _nodes(product["offers"]) if _typed(node, "Offer")]
+    return bool(offers) and all(str(offer.get("availability", "")).rsplit("/", 1)[-1] in {"OutOfStock", "SoldOut", "Discontinued", "PreOrder", "PreSale"} for offer in offers)
 
 
 def _microdata_products(soup, product_url):

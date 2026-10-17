@@ -80,7 +80,7 @@ A busca começa imediatamente. Os alertas de queda exigem histórico: por padrã
 
 Caminhos relativos ao diretório atual. `.env` deve ficar fora do Git. O `.env` local não configura o GitHub Actions. A lista manual, quando usada, exige ID único, nome, categoria, loja e URL HTTPS de produto; frete aceita zero ou `null`. O frete manual é mostrado, mas não entra no cálculo do desconto.
 
-Códigos de saída: **0** sucesso; **1** ausência de buscas/produtos ou falha de busca, coleta ou envio; **2** configuração/persistência inválida. Execuções com falhas parciais salvam os resultados válidos. Sem webhook, uma coleta pode retornar sucesso, avisando que uma oferta não foi publicada.
+Códigos de saída: **0** sucesso; **1** ausência de buscas/produtos ou falha de busca, coleta ou envio; **2** configuração/persistência inválida. Execuções com falhas parciais salvam os resultados válidos. Produtos identificados com todas as ofertas declaradas sem estoque, descontinuadas ou em pré-venda são contados como indisponíveis e não causam erro na execução; ausência de dados ou bloqueio continua sendo falha de coleta. Sem webhook, uma coleta pode retornar sucesso, avisando que uma oferta não foi publicada.
 
 ## GitHub Actions
 
