@@ -1,105 +1,6 @@
 {
   "products": [
     {
-      "id": "forhonor-combat-shirt-711-digital-marinha-45389913653317",
-      "name": "COMBAT SHIRT  711- DIGITAL MARINHA",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marinha?variant=45389913653317",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-combat-shirt-711-digital-marines-45389935149125",
-      "name": "COMBAT SHIRT 711 DIGITAL MARINES",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marines?variant=45389935149125",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-combat-shirt-camutrop-45389917716549",
-      "name": "COMBAT SHIRT CAMUTROP",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-camutrop?variant=45389917716549",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-mochila-modular-porta-capacete-cordura-1000-black-45389898317893",
-      "name": "Mochila Modular Porta-Capacete Cordura 1000 – BLACK",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/mochila-modular-porta-capacete-cordura-1000-black?variant=45389898317893",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-mochila-modular-porta-capacete-cordura-1000-olive-green-45389915422789",
-      "name": "Mochila Modular Porta-Capacete Cordura 1000 - OLIVE GREEN",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/mochila-modular-porta-capacete-cordura-1000-olive-green?variant=45389915422789",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-mochila-modular-porta-capacete-multicam-45389915390021",
-      "name": "MOCHILA MODULAR PORTA CAPACETE - MULTICAM",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/mochila-modular-porta-capacete-multicam?variant=45389915390021",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-colete-iiia-dark-navy-marinho-45389900447813",
-      "name": "COLETE IIIA - DARK NAVY (MARINHO)",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-iiia-dark-navy-marinho?variant=45389900447813",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-colete-modular-iiia-black-45389910245445",
-      "name": "COLETE MODULAR IIIA - BLACK",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-black?variant=45389910245445",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-colete-plate-camuflado-multicam-45389935116357",
-      "name": "COLETE PLATE CAMUFLADO MULTICAM",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-plate-camuflado-multicam?variant=45389935116357",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
       "id": "kabum-105105",
       "name": "SSD Rise Mode Gamer Line, 240GB, 2.5\", SATA III, Leitura: 530 MB/s, Gravação: 520 MB/s, Preto - RM-SSD-240",
       "category": "tecnologia",
@@ -463,6 +364,39 @@
       "enabled": true
     },
     {
+      "id": "forhonor-combat-shirt-711-digital-marinha-45389913653317",
+      "name": "COMBAT SHIRT  711- DIGITAL MARINHA",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marinha?variant=45389913653317",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-combat-shirt-711-digital-marines-45389935149125",
+      "name": "COMBAT SHIRT 711 DIGITAL MARINES",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marines?variant=45389935149125",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-combat-shirt-716-cinza-bandeirante-pmesp-45389913194565",
+      "name": "COMBAT SHIRT 716 - CINZA BANDEIRANTE PMESP",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-716-cinza-bandeirante-pmesp?variant=45389913194565",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
       "id": "atalaia-tenis-corrida-atalaia-a600",
       "name": "TÊNIS CORRIDA ATALAIA A600",
       "category": "militar",
@@ -523,6 +457,72 @@
       "category": "militar",
       "store": "For Honor",
       "url": "https://www.forhonor.com.br/products/porta-lanterna-coyote?variant=45389930594373",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-mochila-modular-porta-capacete-cordura-1000-black-45389898317893",
+      "name": "Mochila Modular Porta-Capacete Cordura 1000 – BLACK",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/mochila-modular-porta-capacete-cordura-1000-black?variant=45389898317893",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-mochila-modular-porta-capacete-cordura-1000-olive-green-45389915422789",
+      "name": "Mochila Modular Porta-Capacete Cordura 1000 - OLIVE GREEN",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/mochila-modular-porta-capacete-cordura-1000-olive-green?variant=45389915422789",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-mochila-modular-porta-capacete-multicam-45389915390021",
+      "name": "MOCHILA MODULAR PORTA CAPACETE - MULTICAM",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/mochila-modular-porta-capacete-multicam?variant=45389915390021",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-colete-iiia-dark-navy-marinho-45389900447813",
+      "name": "COLETE IIIA - DARK NAVY (MARINHO)",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/colete-iiia-dark-navy-marinho?variant=45389900447813",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-colete-modular-iiia-black-45389910245445",
+      "name": "COLETE MODULAR IIIA - BLACK",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-black?variant=45389910245445",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-colete-plate-camuflado-multicam-45389935116357",
+      "name": "COLETE PLATE CAMUFLADO MULTICAM",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/colete-plate-camuflado-multicam?variant=45389935116357",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -611,6 +611,17 @@
       "category": "militar",
       "store": "For Honor",
       "url": "https://www.forhonor.com.br/products/mochila-modular-porta-capacete-cordura-1000-coyote?variant=45389908410437",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-combat-shirt-camutrop-45389917716549",
+      "name": "COMBAT SHIRT CAMUTROP",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-camutrop?variant=45389917716549",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
