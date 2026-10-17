@@ -375,22 +375,22 @@
       "enabled": true
     },
     {
-      "id": "forhonor-combat-shirt-711-digital-marines-45389935149125",
-      "name": "COMBAT SHIRT 711 DIGITAL MARINES",
+      "id": "forhonor-combat-shirt-716-cinza-bandeirante-pmesp-45389913194565",
+      "name": "COMBAT SHIRT 716 - CINZA BANDEIRANTE PMESP",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marines?variant=45389935149125",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-716-cinza-bandeirante-pmesp?variant=45389913194565",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
       "enabled": true
     },
     {
-      "id": "forhonor-combat-shirt-716-cinza-bandeirante-pmesp-45389913194565",
-      "name": "COMBAT SHIRT 716 - CINZA BANDEIRANTE PMESP",
+      "id": "forhonor-combat-shirt-711-digital-marines-45389935149125",
+      "name": "COMBAT SHIRT 711 DIGITAL MARINES",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-716-cinza-bandeirante-pmesp?variant=45389913194565",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marines?variant=45389935149125",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -452,11 +452,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-porta-lanterna-coyote-45389930594373",
-      "name": "PORTA LANTERNA - COYOTE",
+      "id": "forhonor-bolso-vertical-coyote-45389925449797",
+      "name": "BOLSO VERTICAL - COYOTE",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/porta-lanterna-coyote?variant=45389930594373",
+      "url": "https://www.forhonor.com.br/products/bolso-vertical-coyote?variant=45389925449797",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -606,6 +606,28 @@
       "enabled": true
     },
     {
+      "id": "forhonor-colete-modular-iiia-coyote-45389894254661",
+      "name": "COLETE MODULAR IIIA - COYOTE",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-coyote?variant=45389894254661",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-porta-lanterna-coyote-45389930594373",
+      "name": "PORTA LANTERNA - COYOTE",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/porta-lanterna-coyote?variant=45389930594373",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
       "id": "forhonor-mochila-modular-porta-capacete-cordura-1000-coyote-45389908410437",
       "name": "Mochila Modular Porta Capacete Cordura 1000 - COYOTE",
       "category": "militar",
@@ -633,28 +655,6 @@
       "category": "militar",
       "store": "For Honor",
       "url": "https://www.forhonor.com.br/products/combat-shirt-711-iguard?variant=45389927383109",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-bolso-vertical-coyote-45389925449797",
-      "name": "BOLSO VERTICAL - COYOTE",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/bolso-vertical-coyote?variant=45389925449797",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-bolso-horizontal-coyote-45389925515333",
-      "name": "BOLSO HORIZONTAL - COYOTE",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/bolso-horizontal-coyote?variant=45389925515333",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
