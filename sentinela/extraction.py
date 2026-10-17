@@ -109,11 +109,17 @@ def _microdata_products(soup, product_url):
     canonical = soup.find("link", rel="canonical")
     if not canonical or _url(canonical.get("href"), product_url) != _url(product_url, product_url):
         return []
-    scopes = [node for node in soup.select("[itemscope][itemtype]") if node.get("itemtype", "").rstrip("/").endswith("/Product")]
+    def product_scope(node):
+        return node.has_attr("itemscope") and node.get("itemtype", "").rstrip("/").endswith("/Product")
+
+    # Recomendações podem estar aninhadas dentro do Product principal.
+    scopes = [node for node in soup.select("[itemscope][itemtype]") if product_scope(node) and node.find_parent(product_scope) is None]
     if len(scopes) != 1:
         return []
     offers = []
     for scope in scopes[0].select('[itemprop="offers"][itemscope]'):
+        if scope.find_parent(product_scope) is not scopes[0]:
+            continue
         if not scope.get("itemtype", "").rstrip("/").endswith("/Offer"):
             continue
         offer = {"@type": "Offer"}

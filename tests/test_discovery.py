@@ -292,3 +292,28 @@ def test_accessible_catalog_without_matches_is_not_a_network_failure():
     assert result.products == []
     assert result.empty == 1
     assert result.failed == 0
+
+
+@pytest.mark.parametrize('stock,expected_price,expected_unavailable', [('InStock', Decimal('100'), False), ('OutOfStock', None, True)])
+def test_atalaia_nested_recommendation_cannot_supply_price_or_stock(stock, expected_price, expected_unavailable):
+    from sentinela.extraction import is_unavailable
+    url = 'https://atalaia-sao-paulo.lojaintegrada.com.br/produto/bota.html'
+    markup = f'''<link rel="canonical" href="{url}">
+    <div itemscope itemtype="http://schema.org/Product">
+      <h1 itemprop="name">Bota</h1>
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <meta itemprop="price" content="100.00">
+        <meta itemprop="priceCurrency" content="BRL">
+        <meta itemprop="availability" content="http://schema.org/{stock}">
+      </div>
+      <div itemscope itemtype="http://schema.org/Product">
+        <a itemprop="url" href="/produto/lanterna.html">Lanterna</a>
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <meta itemprop="price" content="1.00">
+          <meta itemprop="priceCurrency" content="BRL">
+          <meta itemprop="availability" content="http://schema.org/InStock">
+        </div>
+      </div>
+    </div>'''
+    assert extract_price(markup, url) == expected_price
+    assert is_unavailable(markup, url) == expected_unavailable
