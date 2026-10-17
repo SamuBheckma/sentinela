@@ -364,6 +364,17 @@
       "enabled": true
     },
     {
+      "id": "forhonor-combat-shirt-711-digital-marinha-45389913653317",
+      "name": "COMBAT SHIRT  711- DIGITAL MARINHA",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marinha?variant=45389913653317",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
       "id": "forhonor-combat-shirt-black-45389920370757",
       "name": "COMBAT SHIRT BLACK",
       "category": "militar",
@@ -380,17 +391,6 @@
       "category": "militar",
       "store": "For Honor",
       "url": "https://www.forhonor.com.br/products/combat-shirt-711-iguard?variant=45389927383109",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-combat-shirt-711-digital-marinha-45389913653317",
-      "name": "COMBAT SHIRT  711- DIGITAL MARINHA",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marinha?variant=45389913653317",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
