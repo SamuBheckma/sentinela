@@ -40,7 +40,7 @@ Para abrir o Mercado Livre no navegador padrão que você já usa:
 bash scripts/login_mercadolivre.sh
 ```
 
-No Linux, o script usa `xdg-open`. Não instala dependências nem baixa navegador; o login acontece na janela normal do seu navegador, com seu perfil habitual.
+No Linux, o script usa `xdg-open` em segundo plano, sem aguardar o fechamento do navegador nem compartilhar a entrada do terminal. Não instala dependências nem baixa navegador; o login acontece na janela normal do seu navegador, com seu perfil habitual.
 
 Se sua conta já estiver logada, não precisa repetir o login. Quando os produtos aparecerem, volte ao terminal. Se quiser disponibilizar a sessão ao coletor, digite `EXPORTAR`: o script lê somente cookies de `mercadolivre.com.br` e seus subdomínios, em modo somente leitura, do perfil Firefox escolhido. Não exporta cookies do Google, senhas ou histórico. Enter cancela sem ler cookies e preserva qualquer sessão anterior. Use uma janela normal, sem modo privado ou contêiner. A exportação de outros navegadores não está implementada.
 

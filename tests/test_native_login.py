@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 import sqlite3
+import subprocess
 import time
 from unittest.mock import Mock
 
@@ -49,10 +50,14 @@ def test_export_is_scoped_readonly_and_private(tmp_path, version):
 def test_linux_delegates_only_url_to_default_browser(monkeypatch):
     monkeypatch.setattr(native.sys, 'platform', 'linux')
     monkeypatch.setattr(native.shutil, 'which', lambda _: '/usr/bin/xdg-open')
-    run = Mock()
-    monkeypatch.setattr(native.subprocess, 'run', run)
+    launch = Mock()
+    monkeypatch.setattr(native.subprocess, 'Popen', launch)
     native.open_default_browser()
-    run.assert_called_once_with(['xdg-open', native.URL], check=True, timeout=30)
+    launch.assert_called_once_with(
+        ['/usr/bin/xdg-open', native.URL], stdin=subprocess.DEVNULL,
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+        start_new_session=True, close_fds=True,
+    )
 
 
 def test_cancel_does_not_read_profile_or_overwrite_state(tmp_path, monkeypatch):
@@ -136,3 +141,43 @@ def test_network_error_does_not_claim_user_is_logged_out(tmp_path, monkeypatch):
     opener.open.side_effect = OSError('offline')
     monkeypatch.setattr(native, 'build_opener', lambda _: opener)
     assert native.check_session_access(destination) == 'unverified'
+
+
+
+def test_export_prompt_does_not_wait_for_browser_to_exit(tmp_path, monkeypatch):
+    launcher = tmp_path / 'xdg-open'
+    launcher.write_text('#!/bin/sh\nexec sleep 30\n')
+    launcher.chmod(0o700)
+    monkeypatch.setattr(native.sys, 'platform', 'linux')
+    monkeypatch.setattr(native.shutil, 'which', lambda _: str(launcher))
+    real_popen = subprocess.Popen
+    processes = []
+
+    def launch(*args, **kwargs):
+        process = real_popen(*args, **kwargs)
+        processes.append(process)
+        return process
+
+    def cancel_at_prompt(prompt):
+        assert 'EXPORTAR' in prompt
+        assert processes[0].poll() is None
+        return ''
+
+    monkeypatch.setattr(native.subprocess, 'Popen', launch)
+    monkeypatch.setattr('builtins.input', cancel_at_prompt)
+    try:
+        start = time.monotonic()
+        native.login()
+        assert time.monotonic() - start < 2
+    finally:
+        for process in processes:
+            process.terminate()
+            process.wait(timeout=5)
+
+
+def test_browser_launch_failure_is_actionable(monkeypatch):
+    monkeypatch.setattr(native.sys, 'platform', 'linux')
+    monkeypatch.setattr(native.shutil, 'which', lambda _: '/usr/bin/xdg-open')
+    monkeypatch.setattr(native.subprocess, 'Popen', Mock(side_effect=OSError('failed')))
+    with pytest.raises(ValueError, match='Abra manualmente'):
+        native.open_default_browser()

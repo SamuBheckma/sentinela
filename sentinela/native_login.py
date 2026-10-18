@@ -23,11 +23,17 @@ URL = 'https://www.mercadolivre.com.br/ofertas'
 
 def open_default_browser():
     if sys.platform.startswith('linux'):
-        if not shutil.which('xdg-open'):
+        opener = shutil.which('xdg-open')
+        if not opener:
             raise ValueError('xdg-open não está disponível. Abra manualmente: ' + URL)
         try:
-            subprocess.run(['xdg-open', URL], check=True, timeout=30)
-        except (OSError, subprocess.SubprocessError):
+            # Alguns lançadores permanecem ativos enquanto o navegador está aberto.
+            # Não aguardar nem compartilhar o terminal com esse processo.
+            subprocess.Popen(
+                [opener, URL], stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL, start_new_session=True, close_fds=True,
+            )
+        except OSError:
             raise ValueError('Não foi possível abrir o navegador padrão. Abra manualmente: ' + URL) from None
     elif not webbrowser.open(URL):
         raise ValueError('Não foi possível abrir o navegador padrão. Abra manualmente: ' + URL)
