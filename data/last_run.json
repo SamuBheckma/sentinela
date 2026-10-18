@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-10-18T00:59:45.583023+00:00",
+  "summary": {
+    "products": 105,
+    "collected": 99,
+    "failed": 0,
+    "unavailable": 6,
+    "alerts_sent": 0,
+    "alerts_failed": 0,
+    "result_messages": 1,
+    "result_failures": 0,
+    "published": 12,
+    "eligible": 93,
+    "selected": 12
+  },
+  "sources": {
+    "mercadolivre": "requires_login"
+  }
+}
