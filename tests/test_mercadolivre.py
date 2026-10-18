@@ -120,17 +120,15 @@ def test_catalog_and_direct_link_of_same_seller_offer_have_same_id():
     assert '/MLB-999999-' in direct[1]
 
 
-def test_firefox_is_the_default_for_login_and_collection(monkeypatch):
+def test_firefox_is_the_default_for_collection(monkeypatch):
     from sentinela.mercadolivre import browser_name, _launch_browser
     monkeypatch.delenv('ML_BROWSER', raising=False)
     playwright = Mock()
     assert browser_name() == 'firefox'
-    _launch_browser(playwright, headless=False)
     _launch_browser(playwright, headless=True)
-    assert playwright.firefox.launch.call_count == 2
+    assert playwright.firefox.launch.call_count == 1
     playwright.chromium.launch.assert_not_called()
-    assert playwright.firefox.launch.call_args_list[0].kwargs == {'headless': False}
-    assert playwright.firefox.launch.call_args_list[1].kwargs == {'headless': True}
+    playwright.firefox.launch.assert_called_once_with(headless=True)
 
 
 def test_chromium_is_an_explicit_option(monkeypatch):

@@ -34,19 +34,25 @@ A vitrine `/ofertas` é consultada em até três páginas, filtrando pelos seus 
 
 No teste de acesso sem login, o Mercado Livre redirecionou para verificação de conta. Nesse caso a fonte fica com `requires_login`: outras lojas continuam funcionando, e o bot não registra preços inventados nem reutiliza preços antigos dessa fonte como nova coleta.
 
-Para preparar uma sessão separada do seu navegador pessoal:
+Para abrir o Mercado Livre no navegador padrão que você já usa:
 
 ```bash
 bash scripts/login_mercadolivre.sh
 ```
 
-O script reutiliza dependências já instaladas e prepara o Firefox do Playwright, abre um navegador separado e deixa **você** concluir o login e a verificação. Quando os produtos aparecerem, volte ao terminal e pressione Enter. O arquivo `.secrets/ml_state.json` é salvo com permissão 600 e ignorado pelo Git.
+No Linux, o script usa `xdg-open`. Não instala dependências nem baixa navegador; o login acontece na janela normal do seu navegador, com seu perfil habitual.
 
-O padrão é `ML_BROWSER=firefox`, tanto no login quanto na coleta. É uma instalação separada, gerenciada pelo Playwright: o Firefox comum do sistema não é controlado por ele e seu perfil pessoal não é lido. Se necessário, `ML_BROWSER=chromium` seleciona a outra opção. No GitHub, a variável de repositório `ML_BROWSER` deve corresponder à escolha local; o padrão também é Firefox.
+Quando os produtos aparecerem, volte ao terminal. Se quiser disponibilizar a sessão ao coletor, digite `EXPORTAR`: o script lê somente cookies de `mercadolivre.com.br` e seus subdomínios, em modo somente leitura, do perfil Firefox escolhido. Não exporta cookies do Google, senhas ou histórico. Enter cancela sem ler cookies e preserva qualquer sessão anterior. Use uma janela normal, sem modo privado ou contêiner. A exportação de outros navegadores não está implementada.
 
-Trocar Chromium por Firefox não garante que o login com Google seja aceito: o Google pode recusar navegadores controlados por automação. Nesse caso, use a entrada direta do Mercado Livre com seu e-mail/telefone e conclua a verificação normal da conta. Não há tentativa de esconder a automação ou contornar essa recusa.
+O perfil é detectado pelas instalações Firefox comuns, Flatpak e Snap. Se houver vários perfis, escolha o usado no login. Você também pode informar o diretório raiz exibido em `about:profiles`:
 
-Se o PyPI apresentar erro de DNS durante a instalação, o problema é o acesso a `pypi.org`. O script não reinstala o projeto quando as bibliotecas já estão disponíveis; uma primeira instalação ainda exige conexão. Não é necessário alterar a exigência de versão do setuptools.
+```bash
+bash scripts/login_mercadolivre.sh --profile "/caminho/do/perfil"
+```
+
+O destino padrão é `.secrets/ml_state.json`, com permissão 600, ignorado pelo Git. `--state-file` ou `ML_STORAGE_STATE_FILE` permite outro destino. Cookies exportados não comprovam que o login terminou; confirme a coleta em `dry-run`. A exportação não inclui localStorage nem cookies que o Firefox ainda não persistiu em disco.
+
+`ML_BROWSER=firefox` configura apenas a coleta automatizada, não o navegador aberto no login. O coletor usa Playwright e precisa de suas dependências e navegador no ambiente em que for executado. No GitHub, essa preparação é feita pelo workflow quando o secret de sessão existe; a variável de repositório `ML_BROWSER` permite selecionar Firefox ou Chromium.
 
 Para usar a sessão no GitHub Actions:
 

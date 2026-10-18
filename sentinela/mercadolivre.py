@@ -167,29 +167,5 @@ def fetch_offers(session, searches, pages, categories, timeout, user_agent):
 
 
 def login():
-    try:
-        from playwright.sync_api import sync_playwright, Error
-    except ImportError:
-        raise ValueError("Execute bash scripts/login_mercadolivre.sh para instalar o navegador configurado.") from None
-    path = session_path()
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with sync_playwright() as playwright:
-        try:
-            browser = _launch_browser(playwright, headless=False)
-        except Error:
-            raise ValueError('Não foi possível abrir o navegador. Execute novamente scripts/login_mercadolivre.sh e confira as dependências do navegador.') from None
-        try:
-            context = browser.new_context(locale='pt-BR')
-            page = context.new_page()
-            page.goto(URL)
-            print(f'Navegador separado do Sentinela: {browser_name()}.')
-            print('Conclua o login/verificação no Mercado Livre. Se o Google recusar o navegador de automação, use a entrada direta do Mercado Livre com seu e-mail/telefone e a verificação da conta.')
-            print('Quando a vitrine mostrar produtos, volte ao terminal. Não usamos seu perfil pessoal do Firefox.')
-            input('Pressione Enter para salvar a sessão: ')
-            if _requires_login(page.url) or page.locator('div.poly-card').count() == 0:
-                raise ValueError('O login ainda não liberou a página de ofertas. Sessão não salva.')
-            context.storage_state(path=str(path))
-            path.chmod(0o600)
-            print(f'Sessão salva em {path}. Não envie este arquivo ao Git nem ao chat.')
-        finally:
-            browser.close()
+    from .native_login import login as native_login
+    return native_login(destination=session_path())

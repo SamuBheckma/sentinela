@@ -21,7 +21,7 @@ def main():
     options = parser.add_mutually_exclusive_group()
     options.add_argument("--dry-run", action="store_true", help="busca e avalia sem alterar arquivos nem publicar")
     options.add_argument("--check-config", action="store_true", help="valida configuração sem acessar rede ou banco")
-    options.add_argument("--ml-login", action="store_true", help="abre login assistido e salva sessão do Mercado Livre fora do Git")
+    options.add_argument("--ml-login", action="store_true", help="abre o navegador padrão e oferece exportação da sessão do Firefox")
     options.add_argument("--search", action="store_true", help="busca produtos e atualiza catálogo, sem publicar ou registrar preços")
     parser.add_argument("--report-all", action="store_true", help="publica todo o catálogo coletado nesta rodada, ignorando a seleção de novidades")
     parser.add_argument("--no-results", action="store_true", help="envia somente alertas de desconto, sem resumo da busca")

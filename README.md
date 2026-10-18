@@ -22,7 +22,7 @@ sentinela
 - `--dry-run`: procura e consulta preços, avaliando o histórico em memória. Não altera catálogo ou banco e não publica.
 - Sem opções: procura produtos, atualiza catálogo, coleta preços, salva histórico e publica uma seleção de novidades, mudanças de preço e descontos com preços e links, respeitando orçamento e deduplicação.
 - `--report-all`: inspeção manual de todos os resultados coletados, sem registrar republicação.
-- `--ml-login`: login assistido do Mercado Livre, com sessão fora do Git.
+- `--ml-login`: abre o navegador padrão e oferece exportação dos cookies do Mercado Livre do Firefox. O script `bash scripts/login_mercadolivre.sh` também funciona sem instalar dependências.
 - `--no-results`: desativa o resumo da busca; mantém apenas alertas de desconto com histórico.
 - `--manual-only`: acompanha somente `config/products.json`, para quem quiser escolher produtos individualmente.
 
