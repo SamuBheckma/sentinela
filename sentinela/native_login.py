@@ -21,6 +21,11 @@ from urllib.request import build_opener, HTTPCookieProcessor, Request
 URL = 'https://www.mercadolivre.com.br/ofertas'
 
 
+class FirefoxDatabaseBusy(ValueError):
+    """O Firefox mantém o banco bloqueado; requer fechamento pelo usuário."""
+
+
+
 def open_default_browser():
     if sys.platform.startswith('linux'):
         opener = shutil.which('xdg-open')
@@ -73,8 +78,12 @@ def export_firefox_session(profile, destination):
                 WHERE (host IN ('mercadolivre.com.br', '.mercadolivre.com.br')
                        OR host LIKE '%.mercadolivre.com.br') AND originAttributes = ''
             """).fetchall()
-    except sqlite3.Error:
-        raise ValueError('Não foi possível ler os cookies do Firefox. Aguarde a gravação do login ou feche o Firefox e tente novamente.') from None
+    except sqlite3.Error as exc:
+        code = getattr(exc, 'sqlite_errorcode', 0) & 0xff
+        if code in (sqlite3.SQLITE_BUSY, sqlite3.SQLITE_LOCKED):
+            raise FirefoxDatabaseBusy('O Firefox está mantendo o banco de cookies bloqueado.') from None
+        error_name = getattr(exc, 'sqlite_errorname', 'SQLITE_ERROR')
+        raise ValueError(f'Não foi possível ler os cookies do perfil {database.parent} ({error_name}). Confira o diretório raiz em about:profiles e as permissões de leitura.') from None
     cookies = []
     for name, value, host, path, expiry, secure, http_only, same_site in rows:
         expiry = expiry / 1000 if version >= 16 else expiry
@@ -133,9 +142,12 @@ def check_session_access(destination):
     return 'unverified'
 
 
-def login(*, profile=None, destination=None):
-    print('Abrindo Mercado Livre no navegador padrão do sistema. Nenhum navegador será instalado.', flush=True)
-    open_default_browser()
+def login(*, profile=None, destination=None, export_only=False):
+    if not export_only:
+        print('Abrindo Mercado Livre no navegador padrão do sistema. Nenhum navegador será instalado.', flush=True)
+        open_default_browser()
+    else:
+        print('Exportação da sessão existente, sem abrir o navegador.')
     print('Se os produtos já aparecem e sua conta está logada, não precisa fazer login novamente.')
     print('Caso contrário, conclua o login na janela aberta. Depois volte a este terminal.')
     print('O lançador abre seu navegador, mas não controla nem lê a janela; verifica o acesso após a exportação.')
@@ -161,7 +173,19 @@ def login(*, profile=None, destination=None):
         else:
             raise ValueError('Perfil Firefox não encontrado. Execute com --profile DIRETORIO_RAIZ (veja about:profiles no Firefox).')
     destination = destination or os.getenv('ML_STORAGE_STATE_FILE', '.secrets/ml_state.json')
-    count = export_firefox_session(profile, destination)
+    for attempt in range(3):
+        try:
+            count = export_firefox_session(profile, destination)
+            break
+        except FirefoxDatabaseBusy:
+            if attempt == 2:
+                raise ValueError('O banco continua bloqueado. Feche todas as janelas do Firefox e execute bash scripts/login_mercadolivre.sh --export-only.') from None
+            print('O Firefox está bloqueando o banco de cookies (SQLITE_BUSY/SQLITE_LOCKED).')
+            print('Feche todas as janelas do Firefox normalmente para gravar e liberar a sessão. Não é preciso sair da conta.')
+            answer = input('Depois de fechar o Firefox, pressione Enter para tentar novamente (C cancela): ')
+            if answer.strip().lower() == 'c':
+                print('Exportação cancelada. A sessão anterior foi preservada.')
+                return
     print(f'{count} cookies do Mercado Livre exportados para {destination} (permissão 600).')
     print('Verificando o acesso à vitrine com a sessão exportada...', flush=True)
     status = check_session_access(destination)
@@ -176,6 +200,7 @@ def login(*, profile=None, destination=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--export-only', action='store_true', help='exporta uma sessão existente sem abrir o navegador')
     parser.add_argument('--profile', help='diretório raiz do perfil Firefox usado no login')
     parser.add_argument('--state-file', help='destino do JSON; padrão .secrets/ml_state.json')
     args = parser.parse_args()
@@ -187,7 +212,7 @@ def main():
                 key, separator, value = line.strip().partition('=')
                 if separator and key.strip() == 'ML_STORAGE_STATE_FILE':
                     destination = value.strip().strip('\"\'')
-        login(profile=args.profile, destination=destination)
+        login(profile=args.profile, destination=destination, export_only=args.export_only)
     except (ValueError, OSError, EOFError, KeyboardInterrupt, configparser.Error) as exc:
         print(f'Login não concluído: {exc}', file=sys.stderr)
         return 2

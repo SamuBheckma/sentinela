@@ -44,6 +44,12 @@ No Linux, o script usa `xdg-open` em segundo plano, sem aguardar o fechamento do
 
 Se sua conta já estiver logada, não precisa repetir o login. Quando os produtos aparecerem, volte ao terminal. Se quiser disponibilizar a sessão ao coletor, digite `EXPORTAR`: o script lê somente cookies de `mercadolivre.com.br` e seus subdomínios, em modo somente leitura, do perfil Firefox escolhido. Não exporta cookies do Google, senhas ou histórico. Enter cancela sem ler cookies e preserva qualquer sessão anterior. Use uma janela normal, sem modo privado ou contêiner. A exportação de outros navegadores não está implementada.
 
+Se o Firefox bloquear o banco (`SQLITE_BUSY`/`SQLITE_LOCKED`), o script pede que você feche todas as janelas normalmente e pressione Enter; ele tenta novamente sem reabrir o navegador. Não faça logout. Também é possível fechar o Firefox após o login e executar diretamente:
+
+```bash
+bash scripts/login_mercadolivre.sh --export-only
+```
+
 O perfil é detectado pelas instalações Firefox comuns, Flatpak e Snap. Se houver vários perfis, escolha o usado no login. Você também pode informar o diretório raiz exibido em `about:profiles`:
 
 ```bash

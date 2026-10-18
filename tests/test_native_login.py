@@ -181,3 +181,51 @@ def test_browser_launch_failure_is_actionable(monkeypatch):
     monkeypatch.setattr(native.subprocess, 'Popen', Mock(side_effect=OSError('failed')))
     with pytest.raises(ValueError, match='Abra manualmente'):
         native.open_default_browser()
+
+
+
+def test_exclusive_firefox_lock_is_identified_without_overwriting_state(tmp_path):
+    profile = make_profile(tmp_path)
+    destination = tmp_path / 'state.json'
+    destination.write_text('existing')
+    with sqlite3.connect(profile / 'cookies.sqlite') as writer:
+        writer.execute('BEGIN EXCLUSIVE')
+        with pytest.raises(native.FirefoxDatabaseBusy, match='bloqueado'):
+            native.export_firefox_session(profile, destination)
+    assert destination.read_text() == 'existing'
+
+
+def test_retry_after_browser_closes_does_not_reopen_browser(tmp_path, monkeypatch):
+    profile = make_profile(tmp_path)
+    destination = tmp_path / 'state.json'
+    open_browser = Mock()
+    monkeypatch.setattr(native, 'open_default_browser', open_browser)
+    answers = iter(['EXPORTAR', ''])
+    monkeypatch.setattr('builtins.input', lambda _: next(answers))
+    export = Mock(side_effect=[native.FirefoxDatabaseBusy(), 2])
+    monkeypatch.setattr(native, 'export_firefox_session', export)
+    monkeypatch.setattr(native, 'check_session_access', lambda _: 'accessible')
+    native.login(profile=profile, destination=destination)
+    assert export.call_count == 2
+    open_browser.assert_called_once()
+
+
+def test_export_only_never_opens_browser(tmp_path, monkeypatch):
+    profile = make_profile(tmp_path)
+    open_browser = Mock()
+    monkeypatch.setattr(native, 'open_default_browser', open_browser)
+    monkeypatch.setattr('builtins.input', lambda _: 'EXPORTAR')
+    monkeypatch.setattr(native, 'check_session_access', lambda _: 'accessible')
+    native.login(profile=profile, destination=tmp_path/'state.json', export_only=True)
+    open_browser.assert_not_called()
+
+
+def test_cancel_busy_retry_preserves_state(tmp_path, monkeypatch):
+    destination = tmp_path / 'state.json'
+    destination.write_text('existing')
+    monkeypatch.setattr(native, 'open_default_browser', Mock())
+    answers = iter(['EXPORTAR', 'C'])
+    monkeypatch.setattr('builtins.input', lambda _: next(answers))
+    monkeypatch.setattr(native, 'export_firefox_session', Mock(side_effect=native.FirefoxDatabaseBusy()))
+    native.login(profile=tmp_path, destination=destination)
+    assert destination.read_text() == 'existing'
