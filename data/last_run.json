@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-10-18T13:00:19.733276+00:00",
+  "observed_at": "2026-10-18T15:55:50.622755+00:00",
   "summary": {
     "products": 111,
     "collected": 105,
@@ -9,9 +9,9 @@
     "alerts_failed": 0,
     "result_messages": 1,
     "result_failures": 0,
-    "published": 12,
-    "eligible": 15,
-    "selected": 12
+    "published": 3,
+    "eligible": 3,
+    "selected": 3
   },
   "sources": {
     "mercadolivre": "requires_login"
