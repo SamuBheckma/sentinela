@@ -111,3 +111,10 @@ def test_invalid_session_is_diagnosed_without_reading_private_browser_profiles(t
     with pytest.raises(MarketplaceUnavailable) as caught:
         _browser_html('https://www.mercadolivre.com.br/ofertas', 15)
     assert caught.value.status == 'invalid_session'
+
+
+def test_catalog_and_direct_link_of_same_seller_offer_have_same_id():
+    catalog = _identity('https://www.mercadolivre.com.br/ssd/p/MLB123456?wid=MLB999999', 'mercadolivre')
+    direct = _identity('https://produto.mercadolivre.com.br/MLB-999999-ssd-_JM', 'mercadolivre')
+    assert catalog[0] == direct[0]
+    assert '/MLB-999999-' in direct[1]

@@ -142,6 +142,8 @@ def _identity(url, store_key):
                 return None
             key += "-" + variant[0]
             query = urlencode({"variant": variant[0]})
+    if store_key == "mercadolivre":
+        key = key.replace("-", "")
     canonical = urlunsplit(("https", parts.hostname, path, query, ""))
     return f"{store_key}-{key.lower()}", canonical
 
