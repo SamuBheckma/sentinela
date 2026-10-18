@@ -1,5 +1,6 @@
 import json
 from decimal import Decimal
+from sentinela.pricing import Observation
 from unittest.mock import Mock
 
 import pytest
@@ -226,7 +227,7 @@ def test_budget_filters_alerts_but_keeps_history(tmp_path, monkeypatch, price, e
         record(db, 'watch', Decimal('2500'), now - timedelta(days=i + 1))
     db.close()
     watch = Product('watch', 'Watch', 'tecnologia', 'Loja', PRODUCT_URL, min_price_brl=Decimal('400'), max_price_brl=Decimal('1600'))
-    monkeypatch.setattr('sentinela.monitor.fetch_price', lambda *args: Decimal(price))
+    monkeypatch.setattr('sentinela.monitor.fetch_observation', lambda *args: Observation(Decimal(price)))
     sends = []
     monkeypatch.setattr('sentinela.monitor.send_discord', lambda *args: sends.append(args))
     summary = run('unused', str(db_path), 'unused', Decimal('.2'), 5, 7, 15, 'test', products=[watch])

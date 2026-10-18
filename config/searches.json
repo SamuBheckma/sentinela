@@ -1,5 +1,5 @@
 {
-  "max_products": 60,
+  "max_products": 120,
   "notes": "Faixa de R$ 400 a R$ 1600 aplicada aos relógios para treino. Equipamentos de moto agrupados em militar por compatibilidade com as categorias atuais.",
   "searches": [
     {
@@ -8,7 +8,7 @@
       "stores": [
         "kabum"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -18,7 +18,7 @@
       "stores": [
         "kabum"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -28,7 +28,7 @@
       "stores": [
         "kabum"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -38,7 +38,7 @@
       "stores": [
         "kabum"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -48,7 +48,7 @@
       "stores": [
         "kabum"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -58,7 +58,7 @@
       "stores": [
         "kabum"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -68,7 +68,7 @@
       "stores": [
         "kabum"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -78,7 +78,7 @@
       "stores": [
         "kabum"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -88,7 +88,7 @@
       "stores": [
         "kabum"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true,
       "min_price_brl": 400,
@@ -100,7 +100,7 @@
       "stores": [
         "kabum"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true,
       "min_price_brl": 400,
@@ -112,7 +112,7 @@
       "stores": [
         "kabum"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true,
       "min_price_brl": 400,
@@ -124,7 +124,7 @@
       "stores": [
         "forhonor"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -134,7 +134,7 @@
       "stores": [
         "forhonor"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -144,7 +144,7 @@
       "stores": [
         "atalaia"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -154,7 +154,7 @@
       "stores": [
         "forhonor"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -164,7 +164,7 @@
       "stores": [
         "forhonor"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -174,7 +174,7 @@
       "stores": [
         "forhonor"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -184,7 +184,7 @@
       "stores": [
         "forhonor"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -194,7 +194,7 @@
       "stores": [
         "tuttomoto"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -204,7 +204,7 @@
       "stores": [
         "tuttomoto"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     },
@@ -214,9 +214,14 @@
       "stores": [
         "forhonor"
       ],
-      "limit": 3,
+      "limit": 6,
       "exclude": [],
       "enabled": true
     }
-  ]
+  ],
+  "mercadolivre_offers": {
+    "enabled": true,
+    "pages": 3,
+    "categories": []
+  }
 }

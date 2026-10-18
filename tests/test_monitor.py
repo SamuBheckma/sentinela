@@ -1,6 +1,7 @@
 import json
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal
+from sentinela.pricing import Observation
 
 import pytest
 import requests
@@ -113,7 +114,7 @@ def seed(db_path):
 
 
 def test_dry_run_does_not_create_directory(config_file, tmp_path, monkeypatch):
-    monkeypatch.setattr("sentinela.monitor.fetch_price", lambda *args: Decimal("75"))
+    monkeypatch.setattr("sentinela.monitor.fetch_observation", lambda *args: Observation(Decimal("75")))
     parent = tmp_path / "new-directory"
     execute(config_file, parent / "history.sqlite3", dry_run=True)
     assert not parent.exists()
@@ -123,7 +124,7 @@ def test_dry_run_reads_existing_history_without_writing(config_file, tmp_path, m
     db_path = tmp_path / "history.sqlite3"
     seed(db_path)
     original = db_path.read_bytes()
-    monkeypatch.setattr("sentinela.monitor.fetch_price", lambda *args: Decimal("75"))
+    monkeypatch.setattr("sentinela.monitor.fetch_observation", lambda *args: Observation(Decimal("75")))
     monkeypatch.setattr("sentinela.monitor.send_discord", lambda *args: pytest.fail("Dry-run enviou mensagem"))
     with caplog.at_level("INFO"):
         execute(config_file, db_path, webhook="unused", dry_run=True)
@@ -134,7 +135,7 @@ def test_dry_run_reads_existing_history_without_writing(config_file, tmp_path, m
 def test_send_failure_keeps_history_without_dedup_or_secret(config_file, tmp_path, monkeypatch, caplog):
     db_path = tmp_path / "history.sqlite3"
     seed(db_path)
-    monkeypatch.setattr("sentinela.monitor.fetch_price", lambda *args: Decimal("75"))
+    monkeypatch.setattr("sentinela.monitor.fetch_observation", lambda *args: Observation(Decimal("75")))
     def fail(*args):
         raise requests.RequestException("SECRET_WEBHOOK")
     monkeypatch.setattr("sentinela.monitor.send_discord", fail)
@@ -152,7 +153,7 @@ def test_successful_alert_is_not_repeated(config_file, tmp_path, monkeypatch):
     db_path = tmp_path / "history.sqlite3"
     seed(db_path)
     calls = []
-    monkeypatch.setattr("sentinela.monitor.fetch_price", lambda *args: Decimal("75"))
+    monkeypatch.setattr("sentinela.monitor.fetch_observation", lambda *args: Observation(Decimal("75")))
     monkeypatch.setattr("sentinela.monitor.send_discord", lambda *args: calls.append(args))
     assert execute(config_file, db_path, webhook="unused").alerts_sent == 1
     assert execute(config_file, db_path, webhook="unused").alerts_sent == 0
@@ -160,7 +161,7 @@ def test_successful_alert_is_not_repeated(config_file, tmp_path, monkeypatch):
 
 
 def test_collection_failure_is_visible(config_file, tmp_path, monkeypatch):
-    monkeypatch.setattr("sentinela.monitor.fetch_price", lambda *args: None)
+    monkeypatch.setattr("sentinela.monitor.fetch_observation", lambda *args: None)
     summary = execute(config_file, tmp_path / "history.sqlite3")
     assert summary.failed == 1
     assert summary.exit_code == 1
@@ -222,7 +223,7 @@ def test_declared_unavailability_does_not_fail_or_record(config_file, tmp_path, 
     from sentinela.monitor import ProductUnavailable
     def unavailable(*args):
         raise ProductUnavailable
-    monkeypatch.setattr('sentinela.monitor.fetch_price', unavailable)
+    monkeypatch.setattr('sentinela.monitor.fetch_observation', unavailable)
     db_path = tmp_path / 'history.sqlite3'
     summary = execute(config_file, db_path)
     assert summary.unavailable == 1

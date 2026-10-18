@@ -52,3 +52,44 @@ def send_search_results(session: requests.Session, webhook: str, results: list[t
         if not 200 <= response.status_code < 300:
             raise requests.RequestException("Discord não confirmou o resumo da busca.")
     return len(pages)
+
+
+def send_candidates(session, webhook, candidates, timeout, status, on_delivered):
+    """Confirma cada lote antes de registrar sua publicação, permitindo retentar falhas."""
+    import re
+
+    pages, current, size = [], [], 0
+    for candidate in candidates:
+        product, observation = candidate.product, candidate.observation
+        name = re.sub(r"([*_`~\\])", r"\\\1", product.name[:140]).replace('\n', ' ')
+        if candidate.kind == 'historical':
+            label = f'Queda de {candidate.discount:.1%} frente à mediana histórica de {brl(candidate.reference)}.'
+        elif candidate.kind == 'advertised':
+            label = f'Desconto anunciado: {candidate.discount:.1%}; preço anterior informado pela loja: {brl(candidate.reference)}. Ainda não confirmado pelo histórico.'
+        elif candidate.kind == 'price_drop':
+            label = f'Preço {candidate.discount:.1%} abaixo da última publicação ({brl(candidate.reference)}); histórico completo ainda insuficiente.'
+        else:
+            label = 'Novo resultado; desconto não verificado.'
+        condition = '\n' + observation.condition if observation.condition else ''
+        text = f'**{name}** — **{brl(observation.price)}**\n{product.store} | {label}{condition}\n<{product.url}>'
+        if len(text) > 3500:
+            raise ValueError('Resultado longo demais para o Discord.')
+        if current and size + len(text) + 2 > 3500:
+            pages.append(current)
+            current, size = [], 0
+        current.append((candidate, text))
+        size += len(text) + 2
+    if current:
+        pages.append(current)
+    for index, page in enumerate(pages, 1):
+        payload = {'allowed_mentions': {'parse': []}, 'embeds': [{
+            'title': f'🔎 Sentinela — novidades e descontos ({index}/{len(pages)})',
+            'description': '\n\n'.join(text for _, text in page),
+            'footer': {'text': (status + ' | Confira pagamento, variante, vendedor e frete.')[:2048]},
+        }]}
+        response = session.post(webhook, params={'wait': 'true'}, json=payload, timeout=timeout, allow_redirects=False)
+        response.raise_for_status()
+        if not 200 <= response.status_code < 300:
+            raise requests.RequestException('Discord não confirmou a seleção.')
+        on_delivered([candidate for candidate, _ in page])
+    return len(pages)

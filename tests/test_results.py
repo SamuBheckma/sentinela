@@ -1,4 +1,5 @@
 from decimal import Decimal
+from sentinela.pricing import Observation
 from unittest.mock import Mock
 
 import pytest
@@ -66,8 +67,8 @@ def test_unsuccessful_discord_response_is_not_reported_as_sent(status):
 
 
 def execute(tmp_path, monkeypatch, *, dry_run=False, item=None):
-    monkeypatch.setattr('sentinela.monitor.fetch_price', lambda *args: Decimal('100'))
-    return run('unused', str(tmp_path / 'history.sqlite3'), 'unused', Decimal('.2'), 5, 7, 15, 'test', products=[item or product()], publish_results=True, dry_run=dry_run)
+    monkeypatch.setattr('sentinela.monitor.fetch_observation', lambda *args: Observation(Decimal('100')))
+    return run('unused', str(tmp_path / 'history.sqlite3'), 'unused', Decimal('.2'), 5, 7, 15, 'test', products=[item or product()], publish_results=True, dry_run=dry_run, report_all=True)
 
 
 def test_report_does_not_require_history(tmp_path, monkeypatch):

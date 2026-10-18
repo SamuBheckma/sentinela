@@ -21,6 +21,8 @@ def connect(db_path: str, *, dry_run: bool = False) -> sqlite3.Connection:
     db.execute("CREATE TABLE IF NOT EXISTS prices (product_id TEXT NOT NULL, observed_at TEXT NOT NULL, price_cents INTEGER NOT NULL, PRIMARY KEY (product_id, observed_at))")
     db.execute("CREATE INDEX IF NOT EXISTS ix_prices_product_time ON prices(product_id, observed_at)")
     db.execute("CREATE TABLE IF NOT EXISTS alerts (product_id TEXT NOT NULL, price_cents INTEGER NOT NULL, sent_at TEXT NOT NULL, PRIMARY KEY(product_id, price_cents))")
+    db.execute("CREATE TABLE IF NOT EXISTS publications (product_id TEXT NOT NULL, price_cents INTEGER NOT NULL, kind TEXT NOT NULL, sent_at TEXT NOT NULL)")
+    db.execute("CREATE INDEX IF NOT EXISTS ix_publications_product_time ON publications(product_id, sent_at)")
     db.commit()
     return db
 
@@ -53,4 +55,18 @@ def was_alerted(db: sqlite3.Connection, product_id: str, price: Decimal) -> bool
 
 def mark_alerted(db: sqlite3.Connection, product_id: str, price: Decimal, now: datetime):
     db.execute("INSERT OR IGNORE INTO alerts VALUES (?, ?, ?)", (product_id, cents(price), now.isoformat()))
+    db.commit()
+
+
+def last_publication(db: sqlite3.Connection, product_id: str):
+    return db.execute("SELECT price_cents, sent_at FROM publications WHERE product_id=? ORDER BY sent_at DESC, rowid DESC LIMIT 1", (product_id,)).fetchone()
+
+
+def recently_published(db: sqlite3.Connection, product_id: str, price: Decimal, now: datetime, days: int) -> bool:
+    cutoff = (now - timedelta(days=days)).isoformat()
+    return db.execute("SELECT 1 FROM publications WHERE product_id=? AND price_cents=? AND sent_at>=? LIMIT 1", (product_id, cents(price), cutoff)).fetchone() is not None
+
+
+def mark_published(db: sqlite3.Connection, product_id: str, price: Decimal, kind: str, now: datetime):
+    db.execute("INSERT INTO publications(product_id, price_cents, kind, sent_at) VALUES (?, ?, ?, ?)", (product_id, cents(price), kind, now.isoformat()))
     db.commit()

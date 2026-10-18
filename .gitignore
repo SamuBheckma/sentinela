@@ -11,3 +11,6 @@ build/
 dist/
 .env.*
 !.env.example
+.secrets/
+ml_profile/
+ml_state.json

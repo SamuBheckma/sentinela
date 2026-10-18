@@ -20,7 +20,9 @@ sentinela
 - `--check-config`: valida arquivos e ambiente sem acessar rede ou banco.
 - `--search`: procura produtos, mostra nomes e links e atualiza o catálogo. Não registra preços nem envia mensagens.
 - `--dry-run`: procura e consulta preços, avaliando o histórico em memória. Não altera catálogo ou banco e não publica.
-- Sem opções: procura produtos, atualiza catálogo, coleta preços, salva histórico, publica no Discord um resumo com preços e links dentro dos filtros e envia possíveis ofertas elegíveis.
+- Sem opções: procura produtos, atualiza catálogo, coleta preços, salva histórico e publica uma seleção de novidades, mudanças de preço e descontos com preços e links, respeitando orçamento e deduplicação.
+- `--report-all`: inspeção manual de todos os resultados coletados, sem registrar republicação.
+- `--ml-login`: login assistido do Mercado Livre, com sessão fora do Git.
 - `--no-results`: desativa o resumo da busca; mantém apenas alertas de desconto com histórico.
 - `--manual-only`: acompanha somente `config/products.json`, para quem quiser escolher produtos individualmente.
 
@@ -28,7 +30,7 @@ Os mesmos comandos funcionam com `python -m sentinela.cli` no lugar de `sentinel
 
 ## Você escolhe buscas, não cada produto
 
-Edite **`config/searches.json`**. A configuração atual cobre SSDs de 240/256 e 500/512 GB, NVMe, placa-mãe, controladora RGB, consoles e relógios Xiaomi/Samsung na KaBuM; luva, combat/farda, coyote, mochila, colete e MOLLE/modular na For Honor; produtos Atalaia na Coturno Atalaia; jaqueta e bota na Tutto Moto. Há até três resultados por termo e limite de 60 produtos. Alguns termos podem não ter resultados na primeira página. Termos de categoria foram simplificados para acompanhar os títulos usados pelas lojas: mochila, colete, combat e modular.
+Edite **`config/searches.json`**. A configuração atual cobre SSDs de 240/256 e 500/512 GB, NVMe, placa-mãe, controladora RGB, consoles e relógios Xiaomi/Samsung na KaBuM; luva, combat/farda, coyote, mochila, colete e MOLLE/modular na For Honor; produtos Atalaia na Coturno Atalaia; jaqueta e bota na Tutto Moto. Há até seis resultados por termo e limite de 120 produtos, distribuídos entre as lojas. A vitrine de ofertas do Mercado Livre está preparada para até três páginas e depende de acesso utilizável ou sessão autenticada. Alguns termos podem não ter resultados na primeira página. Termos de categoria foram simplificados para acompanhar os títulos usados pelas lojas: mochila, colete, combat e modular.
 
 ```json
 {
@@ -46,7 +48,7 @@ Edite **`config/searches.json`**. A configuração atual cobre SSDs de 240/256 e
 }
 ```
 
-`category` aceita `tecnologia` ou `militar`; ela organiza o catálogo, não determina a busca. `term` define as palavras que devem aparecer no título, ignorando acentos e maiúsculas. `exclude` remove títulos contendo os termos indicados. `limit` limita os resultados por termo e loja (1–20); `max_products` limita o catálogo automático (1–100). `min_price_brl` e `max_price_brl` limitam quais preços podem gerar alertas. Relógios de treino estão configurados entre R$ 400 e R$ 1.600. Preços fora da faixa podem entrar no catálogo e histórico, mas não geram alertas; os limites são conferidos na página do produto, não no preço anunciado na busca.
+`category` aceita `tecnologia` ou `militar`; ela organiza o catálogo, não determina a busca. `term` define as palavras que devem aparecer no título, ignorando acentos e maiúsculas. `exclude` remove títulos contendo os termos indicados. `limit` limita os resultados por termo e loja (1–20); `max_products` limita o catálogo automático (1–300). `min_price_brl` e `max_price_brl` limitam quais preços podem gerar alertas. Relógios de treino estão configurados entre R$ 400 e R$ 1.600. Preços fora da faixa podem entrar no catálogo e histórico, mas não geram alertas; os limites são conferidos na página do produto, não no preço anunciado na busca.
 
 Adaptadores: `kabum`, `forhonor`, `atalaia`, `tuttomoto`, `terabyte`, `mercadolivre` e `amazon`. Buscas públicas na KaBuM, For Honor, Coturno Atalaia e Tutto Moto foram verificadas; as demais fontes podem retornar bloqueio, exigir JavaScript ou não entregar produtos reconhecíveis. Não há promessa de funcionamento em todos os domínios. O programa informa a falha e não tenta contornar bloqueios.
 
@@ -62,7 +64,10 @@ O catálogo fica em `data/discovered.json`: produtos novos têm prioridade, e os
 4. **Enviar o projeto ao GitHub** e cadastrar o secret `DISCORD_WEBHOOK_URL` para executar o monitor automaticamente.
 5. **Acompanhar os logs** e conferir vendedor, variante, preço final e frete antes de comprar ou divulgar.
 
-A busca e o resumo no Discord começam imediatamente, desde que o webhook esteja configurado. Cada execução normal publica os resultados em mensagens divididas para respeitar os limites do Discord. Produtos sem preço utilizável, sem estoque ou fora da faixa não entram no resumo. As mensagens identificam os preços como observados, sem desconto verificado. Se não houver resultados elegíveis, é publicado um aviso. Os alertas de queda exigem histórico: por padrão, pelo menos **cinco observações anteriores**, **sete dias desde a primeira coleta** e **20% abaixo da mediana** de todas as observações anteriores do mesmo produto. Resultado encontrado não significa desconto confirmado. O preço anunciado pode depender de condições de pagamento que o bot não verifica. Na For Honor, a variante presente no link é mantida para separar tamanho/cor no histórico. Na Coturno Atalaia, o preço também pode ser lido de microdados estruturados da página, sempre verificando a URL canônica e a disponibilidade.
+O bot publica uma seleção de até 12 produtos por rodada, priorizando queda frente ao histórico, desconto anunciado, baixa desde a última publicação e novidades. Preço anterior informado pela loja não é confundido com mediana histórica. A mesma oferta/preço não é repetida durante sete dias, e uma rodada sem novidades não reenviará o catálogo inteiro.
+
+**Consulte [docs/OFERTAS.md](docs/OFERTAS.md) para as regras, os novos parâmetros e o passo a passo do Mercado Livre.** Sua etapa é concluir o login assistido e cadastrar o secret `ML_STORAGE_STATE` caso queira usar essa fonte no GitHub. O webhook já configurado continua sendo usado para as publicações.
+
 
 ## Ambiente
 
@@ -88,7 +93,7 @@ Códigos de saída: **0** sucesso; **1** ausência de buscas/produtos ou falha d
 1. Envie os arquivos ao repositório, sem `.env` nem credenciais.
 2. Em **Settings → Secrets and variables → Actions**, crie o secret `DISCORD_WEBHOOK_URL`.
 3. Em **Settings → Actions → General**, permita leitura e escrita para workflows; a branch deve permitir push pelo bot.
-4. Execute **Actions → Sentinela monitor → Run workflow** e escolha o modo: `monitor` coleta e avalia alertas; `search` apenas busca; `dry-run` simula sem gravar. Confira o resumo e os logs; os arquivos de dados também ficam disponíveis como artifact por sete dias.
+4. Execute **Actions → Sentinela monitor → Run workflow** e escolha o modo: `monitor` coleta e avalia alertas; `search` apenas busca; `dry-run` simula sem gravar; `report-all` publica o catálogo inteiro para inspeção manual. Confira o resumo e os logs; os arquivos de dados também ficam disponíveis como artifact por sete dias.
 
 O workflow executa automaticamente em pushes de código/configuração para `main`, permite disparo manual e procura e monitora a cada três horas (`17 */3 * * *`, UTC), sujeito a atrasos. Catálogo e SQLite são commitados mesmo após falhas parciais. Se o push falhar, os dados dessa execução não ficam persistidos. Os testes de CI não acessam lojas nem Discord. Versionar SQLite é uma solução inicial: para escala, use armazenamento persistente externo. Evite executar instâncias simultâneas sobre os mesmos arquivos.
 
@@ -100,14 +105,17 @@ O workflow executa automaticamente em pushes de código/configuração para `mai
 | `discovery.py` | Buscas, filtros e catálogo |
 | `extraction.py` | Preço JSON-LD do produto identificado |
 | `money.py` | Conversão monetária |
-| `storage.py` | SQLite, mediana e deduplicação |
+| `storage.py` | SQLite, mediana e publicações confirmadas |
+| `pricing.py` | Observações de preço e referência anunciada |
+| `selection.py` | Classificação, diversidade e intervalo de repetição |
+| `mercadolivre.py` | Cards de ofertas, paginação e sessão opcional |
 | `notifications.py` | Mensagens do Discord |
 | `monitor.py` | Coleta e avaliação |
 | `cli.py` | Fluxo automático e comandos |
 | `core.py` | Reexportação das funções públicas anteriores |
 
-Execute `pytest -q`. Os testes usam páginas e respostas simuladas, sem publicar mensagens. Alertas são deduplicados por ID/preço; envio malsucedido não marca sucesso, e a próxima coleta reavalia a oferta.
+Execute `pytest -q`. Os testes usam páginas e respostas simuladas, sem publicar mensagens. A seleção é deduplicada por ID/preço e intervalo, registrando apenas os lotes confirmados; envio malsucedido preserva a elegibilidade dos itens ainda não enviados.
 
 ## Limites
 
-A busca consulta somente a primeira página pública, sem paginação nem login. Não substitui um mecanismo universal de busca, não compara automaticamente o mesmo modelo entre lojas e não verifica cupons, vendedor ou frete por CEP. Algumas ofertas JSON-LD não informam disponibilidade; isso não comprova estoque. A mediana usa todo o histórico, sem janela móvel. Ofertas referenciadas por `@id` fora do objeto ainda não são resolvidas. Produtos sem preço BRL atribuível à sua identidade são ignorados.
+Buscas comuns consultam a primeira página pública; a vitrine do Mercado Livre admite paginação limitada e sessão opcional autenticada. Não substitui um mecanismo universal de busca, não compara automaticamente o mesmo modelo entre lojas e não verifica cupons, vendedor ou frete por CEP. Algumas ofertas JSON-LD não informam disponibilidade; isso não comprova estoque. A mediana usa todo o histórico, sem janela móvel. Ofertas referenciadas por `@id` fora do objeto ainda não são resolvidas. Produtos sem preço BRL atribuível à sua identidade são ignorados.

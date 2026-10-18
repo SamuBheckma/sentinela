@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 
 from .config import Product, load_products, price_bounds, valid_https
 from .extraction import _nodes, _typed
+from .pricing import Observation
 
 LOG = logging.getLogger(__name__)
 
@@ -51,6 +52,8 @@ class Search:
 class SearchConfig:
     searches: tuple[Search, ...]
     max_products: int = 30
+    ml_offer_pages: int = 0
+    ml_categories: tuple[str, ...] = ()
 
 
 def load_searches(path: str) -> SearchConfig:
@@ -58,8 +61,8 @@ def load_searches(path: str) -> SearchConfig:
     if not isinstance(raw, dict) or not isinstance(raw.get("searches"), list):
         raise ValueError("A configuração deve conter uma lista searches.")
     maximum = raw.get("max_products", 30)
-    if type(maximum) is not int or not 1 <= maximum <= 100:
-        raise ValueError("max_products deve estar entre 1 e 100.")
+    if type(maximum) is not int or not 1 <= maximum <= 300:
+        raise ValueError("max_products deve estar entre 1 e 300.")
     searches = []
     for item in raw["searches"]:
         if not isinstance(item, dict) or type(item.get("enabled", True)) is not bool:
@@ -83,7 +86,16 @@ def load_searches(path: str) -> SearchConfig:
             raise ValueError("exclude deve ser uma lista de termos não vazios.")
         min_price, max_price = price_bounds(item)
         searches.append(Search(term.strip(), category, tuple(dict.fromkeys(stores)), limit, tuple(exclude), min_price, max_price))
-    return SearchConfig(tuple(searches), maximum)
+    ml = raw.get("mercadolivre_offers", {})
+    if not isinstance(ml, dict) or type(ml.get("enabled", False)) is not bool:
+        raise ValueError("mercadolivre_offers inválido.")
+    pages = ml.get("pages", 3)
+    categories = ml.get("categories", [])
+    if type(pages) is not int or not 1 <= pages <= 10:
+        raise ValueError("Páginas de ofertas deve estar entre 1 e 10.")
+    if not isinstance(categories, list) or any(not isinstance(cat, str) or not re.fullmatch(r"MLB[0-9]+", cat) for cat in categories) or len(categories) > 10:
+        raise ValueError("Categorias do Mercado Livre devem conter IDs MLB válidos, até 10.")
+    return SearchConfig(tuple(searches), maximum, pages if ml.get("enabled", False) else 0, tuple(categories))
 
 
 def _normalize(text):
@@ -118,6 +130,11 @@ def _identity(url, store_key):
     else:
         path = parts.path.rstrip("/")
     query = ""
+    if store_key == "mercadolivre":
+        wid = parse_qs(parts.query).get("wid", [])
+        if wid and len(wid) == 1 and re.fullmatch(r"MLB[0-9]+", wid[0]):
+            key = wid[0]
+            query = urlencode({"wid": wid[0]})
     if store_key == "forhonor":
         variant = parse_qs(parts.query).get("variant", [])
         if variant:
@@ -170,6 +187,8 @@ class DiscoverySummary:
     attempted: int = 0
     failed: int = 0
     empty: int = 0
+    observations: dict[str, Observation] = field(default_factory=dict)
+    source_status: dict[str, str] = field(default_factory=dict)
 
 
 def discover(config: SearchConfig, session: requests.Session, timeout: int, user_agent: str) -> DiscoverySummary:
@@ -198,12 +217,36 @@ def discover(config: SearchConfig, session: requests.Session, timeout: int, user
                 else:
                     LOG.info("Busca '%s' em %s: %d produtos", search.term, store_key, len(found))
                 for product in found:
-                    if len(products) < config.max_products:
-                        products.setdefault(product.id, product)
+                    products.setdefault(product.id, product)
             except requests.RequestException as exc:
                 summary.failed += 1
                 LOG.warning("Busca '%s' em %s falhou (%s)", search.term, store_key, type(exc).__name__)
-    summary.products = list(products.values())
+    if config.ml_offer_pages and config.searches:
+        from .mercadolivre import fetch_offers, MarketplaceUnavailable
+        try:
+            found, prices = fetch_offers(session, config.searches, config.ml_offer_pages, config.ml_categories, timeout, user_agent)
+            # O adaptador é opcional: sua indisponibilidade fica explícita, sem interromper outras lojas.
+            summary.source_status["mercadolivre"] = "ok" if found else "no_matching_offers"
+            for product in found:
+                products.setdefault(product.id, product)
+                summary.observations[product.id] = prices[product.id]
+            LOG.info("Mercado Livre: %d ofertas correspondentes aos termos", len(found))
+        except MarketplaceUnavailable as exc:
+            summary.source_status["mercadolivre"] = exc.status
+            for product in exc.products:
+                products.setdefault(product.id, product)
+                summary.observations[product.id] = exc.observations[product.id]
+            LOG.warning("Mercado Livre indisponível (%s); as demais fontes continuam", exc.status)
+    from collections import defaultdict, deque
+    queues = defaultdict(deque)
+    for product in products.values():
+        queues[product.store].append(product)
+    balanced = []
+    while any(queues.values()) and len(balanced) < config.max_products:
+        for queue in queues.values():
+            if queue and len(balanced) < config.max_products:
+                balanced.append(queue.popleft())
+    summary.products = balanced
     return summary
 
 
@@ -215,6 +258,8 @@ def update_catalog(path: str, found: list[Product], maximum: int, *, dry_run: bo
         for product in previous:
             for search in config.searches:
                 names = {STORES[key].name for key in search.stores}
+                if config.ml_offer_pages:
+                    names.add("Mercado Livre")
                 if product.store in names and _matches(product.name, search):
                     active.append(replace(product, category=search.category, min_price_brl=search.min_price_brl, max_price_brl=search.max_price_brl))
                     break
