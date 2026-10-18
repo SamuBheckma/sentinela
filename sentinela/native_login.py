@@ -3,6 +3,7 @@ import argparse
 import configparser
 from contextlib import closing
 import json
+import http.cookiejar
 import os
 from pathlib import Path
 import shutil
@@ -12,6 +13,10 @@ import sys
 import tempfile
 import time
 import webbrowser
+import re
+from urllib.error import URLError
+from urllib.parse import urlsplit
+from urllib.request import build_opener, HTTPCookieProcessor, Request
 
 URL = 'https://www.mercadolivre.com.br/ofertas'
 
@@ -89,10 +94,45 @@ def export_firefox_session(profile, destination):
     return len(cookies)
 
 
+def check_session_access(destination):
+    """Verifica a vitrine com os cookies exportados; não controla a janela aberta."""
+    state = json.loads(Path(destination).expanduser().read_text())
+    jar = http.cookiejar.CookieJar()
+    for cookie in state['cookies']:
+        domain = cookie['domain']
+        if not (domain.lstrip('.') == 'mercadolivre.com.br' or domain.endswith('.mercadolivre.com.br')):
+            continue
+        expiry = cookie.get('expires', -1)
+        jar.set_cookie(http.cookiejar.Cookie(
+            version=0, name=cookie['name'], value=cookie['value'],
+            port=None, port_specified=False, domain=domain,
+            domain_specified=domain.startswith('.'), domain_initial_dot=domain.startswith('.'),
+            path=cookie.get('path', '/'), path_specified=True,
+            secure=cookie.get('secure', True), expires=None if expiry <= 0 else int(expiry),
+            discard=expiry <= 0, comment=None, comment_url=None, rest={},
+        ))
+    opener = build_opener(HTTPCookieProcessor(jar))
+    try:
+        with opener.open(Request(URL, headers={'User-Agent': 'Sentinela/0.1'}), timeout=15) as response:
+            url = urlsplit(response.url)
+            if url.hostname not in {'www.mercadolivre.com.br', 'mercadolivre.com.br'} or any(
+                part in url.path for part in ('account-verification', '/login', '/registration', '/captcha')
+            ):
+                return 'requires_login'
+            html = response.read(2_000_000).decode('utf-8', errors='replace')
+    except (OSError, URLError):
+        return 'unverified'
+    if re.search(r'class=[\"\'][^\"\']*\bpoly-card\b', html):
+        return 'accessible'
+    return 'unverified'
+
+
 def login(*, profile=None, destination=None):
     print('Abrindo Mercado Livre no navegador padrão do sistema. Nenhum navegador será instalado.', flush=True)
     open_default_browser()
-    print('Conclua o login na janela normal do navegador e aguarde os produtos aparecerem.')
+    print('Se os produtos já aparecem e sua conta está logada, não precisa fazer login novamente.')
+    print('Caso contrário, conclua o login na janela aberta. Depois volte a este terminal.')
+    print('O lançador abre seu navegador, mas não controla nem lê a janela; verifica o acesso após a exportação.')
     print('A exportação abaixo suporta Firefox instalado no sistema, inclusive Flatpak e Snap.')
     answer = input('Para exportar SOMENTE os cookies do Mercado Livre do Firefox, digite EXPORTAR (Enter cancela): ')
     if answer.strip() != 'EXPORTAR':
@@ -117,7 +157,15 @@ def login(*, profile=None, destination=None):
     destination = destination or os.getenv('ML_STORAGE_STATE_FILE', '.secrets/ml_state.json')
     count = export_firefox_session(profile, destination)
     print(f'{count} cookies do Mercado Livre exportados para {destination} (permissão 600).')
-    print('A exportação não confirma acesso: valide a coleta em dry-run. Não compartilhe este arquivo no chat ou Git.')
+    print('Verificando o acesso à vitrine com a sessão exportada...', flush=True)
+    status = check_session_access(destination)
+    if status == 'accessible':
+        print('Acesso à vitrine confirmado com a sessão exportada. Não é necessário outro login.')
+    elif status == 'requires_login':
+        print('A sessão foi exportada, mas o acesso fora da janela recebeu uma verificação de conta. Sua janela pode continuar logada; confira se escolheu o mesmo perfil. O coletor ainda pode exigir verificação.')
+    else:
+        print('Sessão exportada; não foi possível confirmar o acesso por HTTP. Isso não significa que você esteja deslogado. Valide a coleta em dry-run.')
+    print('Não compartilhe o arquivo de sessão no chat ou Git.')
 
 
 def main():

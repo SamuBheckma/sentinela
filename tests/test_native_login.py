@@ -73,6 +73,7 @@ def test_explicit_export_uses_selected_profile(tmp_path, monkeypatch, capsys):
     destination = tmp_path / 'state.json'
     monkeypatch.setattr(native, 'open_default_browser', Mock())
     monkeypatch.setattr('builtins.input', lambda _: 'EXPORTAR')
+    monkeypatch.setattr(native, 'check_session_access', lambda _: 'accessible')
     native.login(profile=profile, destination=destination)
     assert json.loads(destination.read_text())['cookies']
     output = capsys.readouterr().out
@@ -107,3 +108,31 @@ def test_no_cookies_preserves_existing_state(tmp_path):
     with pytest.raises(ValueError, match='Nenhum cookie válido'):
         native.export_firefox_session(profile, destination)
     assert destination.read_text() == 'existing'
+
+
+@pytest.mark.parametrize('url,html,expected', [
+    (native.URL, '<div class="poly-card poly-card--list">', 'accessible'),
+    ('https://www.mercadolivre.com.br/gz/account-verification', '', 'requires_login'),
+    (native.URL, '<html>Carregando</html>', 'unverified'),
+])
+def test_access_check_reports_access_and_verification(tmp_path, monkeypatch, url, html, expected):
+    destination = tmp_path / 'state.json'
+    destination.write_text(json.dumps({'cookies': []}))
+    response = Mock()
+    response.url = url
+    response.read.return_value = html.encode()
+    response.__enter__ = Mock(return_value=response)
+    response.__exit__ = Mock(return_value=False)
+    opener = Mock()
+    opener.open.return_value = response
+    monkeypatch.setattr(native, 'build_opener', lambda _: opener)
+    assert native.check_session_access(destination) == expected
+
+
+def test_network_error_does_not_claim_user_is_logged_out(tmp_path, monkeypatch):
+    destination = tmp_path / 'state.json'
+    destination.write_text(json.dumps({'cookies': []}))
+    opener = Mock()
+    opener.open.side_effect = OSError('offline')
+    monkeypatch.setattr(native, 'build_opener', lambda _: opener)
+    assert native.check_session_access(destination) == 'unverified'
