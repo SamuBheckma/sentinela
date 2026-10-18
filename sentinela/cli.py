@@ -35,7 +35,11 @@ def main():
     try:
         if args.ml_login:
             from .mercadolivre import login
-            login()
+            try:
+                login()
+            except (ValueError, EOFError) as exc:
+                logging.error("Login não concluído: %s", exc)
+                return 2
             return 0
         settings = Settings.from_env()
         policy = PublicationPolicy.from_env()

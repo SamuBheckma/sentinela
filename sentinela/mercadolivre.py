@@ -72,6 +72,17 @@ def parse_offers(html, searches):
     return list(products.values()), observations
 
 
+def browser_name():
+    name = os.getenv('ML_BROWSER', 'firefox').strip().lower()
+    if name not in {'firefox', 'chromium'}:
+        raise ValueError('ML_BROWSER deve ser firefox ou chromium.')
+    return name
+
+
+def _launch_browser(playwright, *, headless):
+    return getattr(playwright, browser_name()).launch(headless=headless)
+
+
 def session_path():
     return Path(os.getenv('ML_STORAGE_STATE_FILE', '.secrets/ml_state.json'))
 
@@ -92,7 +103,7 @@ def _browser_html(url, timeout):
         raise MarketplaceUnavailable('browser_not_installed') from None
     try:
         with sync_playwright() as playwright:
-            browser = playwright.chromium.launch(headless=True)
+            browser = _launch_browser(playwright, headless=True)
             try:
                 context = browser.new_context(storage_state=state, locale='pt-BR')
                 page = context.new_page()
@@ -157,18 +168,23 @@ def fetch_offers(session, searches, pages, categories, timeout, user_agent):
 
 def login():
     try:
-        from playwright.sync_api import sync_playwright
+        from playwright.sync_api import sync_playwright, Error
     except ImportError:
-        raise ValueError("Instale: pip install -e '.[marketplace]' e python -m playwright install chromium") from None
+        raise ValueError("Execute bash scripts/login_mercadolivre.sh para instalar o navegador configurado.") from None
     path = session_path()
     path.parent.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=False)
+        try:
+            browser = _launch_browser(playwright, headless=False)
+        except Error:
+            raise ValueError('Não foi possível abrir o navegador. Execute novamente scripts/login_mercadolivre.sh e confira as dependências do navegador.') from None
         try:
             context = browser.new_context(locale='pt-BR')
             page = context.new_page()
             page.goto(URL)
-            print('Conclua o login/verificação no navegador. Quando a vitrine mostrar produtos, volte ao terminal.')
+            print(f'Navegador separado do Sentinela: {browser_name()}.')
+            print('Conclua o login/verificação no Mercado Livre. Se o Google recusar o navegador de automação, use a entrada direta do Mercado Livre com seu e-mail/telefone e a verificação da conta.')
+            print('Quando a vitrine mostrar produtos, volte ao terminal. Não usamos seu perfil pessoal do Firefox.')
             input('Pressione Enter para salvar a sessão: ')
             if _requires_login(page.url) or page.locator('div.poly-card').count() == 0:
                 raise ValueError('O login ainda não liberou a página de ofertas. Sessão não salva.')

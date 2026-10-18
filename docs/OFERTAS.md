@@ -40,7 +40,13 @@ Para preparar uma sessão separada do seu navegador pessoal:
 bash scripts/login_mercadolivre.sh
 ```
 
-O script instala as dependências locais e o Chromium, abre um navegador separado e deixa **você** concluir o login e a verificação. Quando os produtos aparecerem, volte ao terminal e pressione Enter. O arquivo `.secrets/ml_state.json` é salvo com permissão 600 e ignorado pelo Git.
+O script reutiliza dependências já instaladas e prepara o Firefox do Playwright, abre um navegador separado e deixa **você** concluir o login e a verificação. Quando os produtos aparecerem, volte ao terminal e pressione Enter. O arquivo `.secrets/ml_state.json` é salvo com permissão 600 e ignorado pelo Git.
+
+O padrão é `ML_BROWSER=firefox`, tanto no login quanto na coleta. É uma instalação separada, gerenciada pelo Playwright: o Firefox comum do sistema não é controlado por ele e seu perfil pessoal não é lido. Se necessário, `ML_BROWSER=chromium` seleciona a outra opção. No GitHub, a variável de repositório `ML_BROWSER` deve corresponder à escolha local; o padrão também é Firefox.
+
+Trocar Chromium por Firefox não garante que o login com Google seja aceito: o Google pode recusar navegadores controlados por automação. Nesse caso, use a entrada direta do Mercado Livre com seu e-mail/telefone e conclua a verificação normal da conta. Não há tentativa de esconder a automação ou contornar essa recusa.
+
+Se o PyPI apresentar erro de DNS durante a instalação, o problema é o acesso a `pypi.org`. O script não reinstala o projeto quando as bibliotecas já estão disponíveis; uma primeira instalação ainda exige conexão. Não é necessário alterar a exigência de versão do setuptools.
 
 Para usar a sessão no GitHub Actions:
 

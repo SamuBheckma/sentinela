@@ -118,3 +118,32 @@ def test_catalog_and_direct_link_of_same_seller_offer_have_same_id():
     direct = _identity('https://produto.mercadolivre.com.br/MLB-999999-ssd-_JM', 'mercadolivre')
     assert catalog[0] == direct[0]
     assert '/MLB-999999-' in direct[1]
+
+
+def test_firefox_is_the_default_for_login_and_collection(monkeypatch):
+    from sentinela.mercadolivre import browser_name, _launch_browser
+    monkeypatch.delenv('ML_BROWSER', raising=False)
+    playwright = Mock()
+    assert browser_name() == 'firefox'
+    _launch_browser(playwright, headless=False)
+    _launch_browser(playwright, headless=True)
+    assert playwright.firefox.launch.call_count == 2
+    playwright.chromium.launch.assert_not_called()
+    assert playwright.firefox.launch.call_args_list[0].kwargs == {'headless': False}
+    assert playwright.firefox.launch.call_args_list[1].kwargs == {'headless': True}
+
+
+def test_chromium_is_an_explicit_option(monkeypatch):
+    from sentinela.mercadolivre import _launch_browser
+    monkeypatch.setenv('ML_BROWSER', 'chromium')
+    playwright = Mock()
+    _launch_browser(playwright, headless=True)
+    playwright.chromium.launch.assert_called_once_with(headless=True)
+    playwright.firefox.launch.assert_not_called()
+
+
+def test_invalid_browser_is_rejected(monkeypatch):
+    from sentinela.mercadolivre import browser_name
+    monkeypatch.setenv('ML_BROWSER', 'unknown')
+    with pytest.raises(ValueError):
+        browser_name()

@@ -32,6 +32,7 @@ jobs:
     timeout-minutes: 20
     env:
       ML_STORAGE_STATE: ${{ secrets.ML_STORAGE_STATE }}
+      ML_BROWSER: ${{ vars.ML_BROWSER || 'firefox' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,7 +46,8 @@ jobs:
         if: ${{ env.ML_STORAGE_STATE != '' }}
         run: |
           pip install -e '.[marketplace]'
-          python -m playwright install --with-deps chromium
+          ML_BROWSER_CHOICE="$(python -c 'from sentinela.mercadolivre import browser_name; print(browser_name())')"
+          python -m playwright install --with-deps "$ML_BROWSER_CHOICE"
           python - <<'PY'
           import json
           import os
