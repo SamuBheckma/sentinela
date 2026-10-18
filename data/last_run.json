@@ -1,16 +1,16 @@
 {
-  "observed_at": "2026-10-18T00:59:45.583023+00:00",
+  "observed_at": "2026-10-18T01:01:43.376954+00:00",
   "summary": {
     "products": 105,
     "collected": 99,
-    "failed": 0,
-    "unavailable": 6,
+    "failed": 6,
+    "unavailable": 0,
     "alerts_sent": 0,
     "alerts_failed": 0,
     "result_messages": 1,
     "result_failures": 0,
     "published": 12,
-    "eligible": 93,
+    "eligible": 81,
     "selected": 12
   },
   "sources": {

@@ -23,17 +23,6 @@
       "enabled": true
     },
     {
-      "id": "atalaia-tenis-corrida-atalaia-a600",
-      "name": "TÊNIS CORRIDA ATALAIA A600",
-      "category": "militar",
-      "store": "Coturno Atalaia",
-      "url": "https://atalaia-sao-paulo.lojaintegrada.com.br/produto/tenis-corrida-atalaia-a600.html",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
       "id": "tuttomoto-jaqueta-tutto-moto-sole-azul",
       "name": "Jaqueta Tutto Moto Sole Azul",
       "category": "militar",
@@ -61,17 +50,6 @@
       "category": "militar",
       "store": "For Honor",
       "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marinha?variant=45389913653317",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "atalaia-bota-tatica-militar-atalaia-thunder",
-      "name": "BOTA TÁTICA MILITAR ATALAIA THUNDER",
-      "category": "militar",
-      "store": "Coturno Atalaia",
-      "url": "https://atalaia-sao-paulo.lojaintegrada.com.br/produto/bota-tatica-militar-atalaia-thunder.html",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -111,17 +89,6 @@
       "enabled": true
     },
     {
-      "id": "atalaia-palmilha-confort",
-      "name": "Palmilha Confort Atalaia Ortopédica Anatômica",
-      "category": "militar",
-      "store": "Coturno Atalaia",
-      "url": "https://atalaia-sao-paulo.lojaintegrada.com.br/produto/palmilha-confort.html",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
       "id": "tuttomoto-jaqueta-casual-citta-marrom",
       "name": "Jaqueta Tutto Cittá - Marrom",
       "category": "militar",
@@ -149,17 +116,6 @@
       "category": "militar",
       "store": "For Honor",
       "url": "https://www.forhonor.com.br/products/combat-shirt-716-cinza-bandeirante-pmesp?variant=45389913194565",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "atalaia-sapato-social-preto-atalaia-couro",
-      "name": "SAPATO SOCIAL ATALAIA COURO PRETO",
-      "category": "militar",
-      "store": "Coturno Atalaia",
-      "url": "https://atalaia-sao-paulo.lojaintegrada.com.br/produto/sapato-social-preto-atalaia-couro.html",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -199,17 +155,6 @@
       "enabled": true
     },
     {
-      "id": "atalaia-coturno-militar-atalaia-zero-um-sem-ziper",
-      "name": "COTURNO MILITAR ATALAIA ZERO UM SEM ZIPER",
-      "category": "militar",
-      "store": "Coturno Atalaia",
-      "url": "https://atalaia-sao-paulo.lojaintegrada.com.br/produto/coturno-militar-atalaia-zero-um-sem-ziper.html",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
       "id": "tuttomoto-jaqueta-casual-citta-vermelho",
       "name": "Jaqueta Tutto Cittá - Vermelho",
       "category": "militar",
@@ -237,17 +182,6 @@
       "category": "militar",
       "store": "For Honor",
       "url": "https://www.forhonor.com.br/products/combat-shirt-711-woodland?variant=45389925744709",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "atalaia-coturno-militar-atalaia-patriota-com-ziper",
-      "name": "COTURNO MILITAR ATALAIA PATRIOTA COM ZIPER",
-      "category": "militar",
-      "store": "Coturno Atalaia",
-      "url": "https://atalaia-sao-paulo.lojaintegrada.com.br/produto/coturno-militar-atalaia-patriota-com-ziper.html",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -1109,6 +1043,72 @@
       "shipping_brl": null,
       "min_price_brl": "400",
       "max_price_brl": "1600",
+      "enabled": true
+    },
+    {
+      "id": "atalaia-tenis-corrida-atalaia-a600",
+      "name": "TÊNIS CORRIDA ATALAIA A600",
+      "category": "militar",
+      "store": "Coturno Atalaia",
+      "url": "https://atalaia-sao-paulo.lojaintegrada.com.br/produto/tenis-corrida-atalaia-a600.html",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "atalaia-bota-tatica-militar-atalaia-thunder",
+      "name": "BOTA TÁTICA MILITAR ATALAIA THUNDER",
+      "category": "militar",
+      "store": "Coturno Atalaia",
+      "url": "https://atalaia-sao-paulo.lojaintegrada.com.br/produto/bota-tatica-militar-atalaia-thunder.html",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "atalaia-palmilha-confort",
+      "name": "Palmilha Confort Atalaia Ortopédica Anatômica",
+      "category": "militar",
+      "store": "Coturno Atalaia",
+      "url": "https://atalaia-sao-paulo.lojaintegrada.com.br/produto/palmilha-confort.html",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "atalaia-sapato-social-preto-atalaia-couro",
+      "name": "SAPATO SOCIAL ATALAIA COURO PRETO",
+      "category": "militar",
+      "store": "Coturno Atalaia",
+      "url": "https://atalaia-sao-paulo.lojaintegrada.com.br/produto/sapato-social-preto-atalaia-couro.html",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "atalaia-coturno-militar-atalaia-zero-um-sem-ziper",
+      "name": "COTURNO MILITAR ATALAIA ZERO UM SEM ZIPER",
+      "category": "militar",
+      "store": "Coturno Atalaia",
+      "url": "https://atalaia-sao-paulo.lojaintegrada.com.br/produto/coturno-militar-atalaia-zero-um-sem-ziper.html",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "atalaia-coturno-militar-atalaia-patriota-com-ziper",
+      "name": "COTURNO MILITAR ATALAIA PATRIOTA COM ZIPER",
+      "category": "militar",
+      "store": "Coturno Atalaia",
+      "url": "https://atalaia-sao-paulo.lojaintegrada.com.br/produto/coturno-militar-atalaia-patriota-com-ziper.html",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
       "enabled": true
     },
     {
