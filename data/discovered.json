@@ -100,11 +100,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-combat-shirt-711-digital-marines-45389935149125",
-      "name": "COMBAT SHIRT 711 DIGITAL MARINES",
+      "id": "forhonor-combat-shirt-716-cinza-bandeirante-pmesp-45389913194565",
+      "name": "COMBAT SHIRT 716 - CINZA BANDEIRANTE PMESP",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marines?variant=45389935149125",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-716-cinza-bandeirante-pmesp?variant=45389913194565",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -144,11 +144,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-combat-shirt-716-cinza-bandeirante-pmesp-45389913194565",
-      "name": "COMBAT SHIRT 716 - CINZA BANDEIRANTE PMESP",
+      "id": "forhonor-combat-shirt-711-digital-marines-45389935149125",
+      "name": "COMBAT SHIRT 711 DIGITAL MARINES",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-716-cinza-bandeirante-pmesp?variant=45389913194565",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marines?variant=45389935149125",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -188,11 +188,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-combat-shirt-camutrop-45389917716549",
-      "name": "COMBAT SHIRT CAMUTROP",
+      "id": "forhonor-combat-shirt-black-45389920370757",
+      "name": "COMBAT SHIRT BLACK",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-camutrop?variant=45389917716549",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-black?variant=45389920370757",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -232,11 +232,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-combat-shirt-711-woodland-45389925744709",
-      "name": "COMBAT SHIRT 711 WOODLAND",
+      "id": "forhonor-combat-digital-711-urbano-sp-45389923090501",
+      "name": "COMBAT DIGITAL 711  URBANO SP.",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-711-woodland?variant=45389925744709",
+      "url": "https://www.forhonor.com.br/products/combat-digital-711-urbano-sp?variant=45389923090501",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -276,11 +276,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-combat-digital-711-urbano-sp-45389923090501",
-      "name": "COMBAT DIGITAL 711  URBANO SP.",
+      "id": "forhonor-combat-shirt-711-iguard-45389927383109",
+      "name": "COMBAT SHIRT 711 - IGUARD",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-digital-711-urbano-sp?variant=45389923090501",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-711-iguard?variant=45389927383109",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -342,11 +342,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-gandola-coyote-45389927710789",
-      "name": "GANDOLA COYOTE",
+      "id": "forhonor-colete-modular-iiia-coyote-45389894254661",
+      "name": "COLETE MODULAR IIIA - COYOTE",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/gandola-coyote?variant=45389927710789",
+      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-coyote?variant=45389894254661",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -375,11 +375,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-colete-modular-iiia-coyote-45389894254661",
-      "name": "COLETE MODULAR IIIA - COYOTE",
+      "id": "forhonor-bolso-vertical-coyote-45389925449797",
+      "name": "BOLSO VERTICAL - COYOTE",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-coyote?variant=45389894254661",
+      "url": "https://www.forhonor.com.br/products/bolso-vertical-coyote?variant=45389925449797",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -408,11 +408,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-porta-lanterna-coyote-45389930594373",
-      "name": "PORTA LANTERNA - COYOTE",
+      "id": "forhonor-gandola-coyote-45389927710789",
+      "name": "GANDOLA COYOTE",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/porta-lanterna-coyote?variant=45389930594373",
+      "url": "https://www.forhonor.com.br/products/gandola-coyote?variant=45389927710789",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -441,11 +441,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-coldre-modular-coyote-45389907296325",
-      "name": "COLDRE MODULAR – COYOTE",
+      "id": "forhonor-porta-lanterna-coyote-45389930594373",
+      "name": "PORTA LANTERNA - COYOTE",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/coldre-modular-coyote?variant=45389907296325",
+      "url": "https://www.forhonor.com.br/products/porta-lanterna-coyote?variant=45389930594373",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -474,11 +474,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-bolso-vertical-coyote-45389925449797",
-      "name": "BOLSO VERTICAL - COYOTE",
+      "id": "forhonor-porta-algema-coyote-45389921812549",
+      "name": "PORTA ALGEMA - COYOTE",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/bolso-vertical-coyote?variant=45389925449797",
+      "url": "https://www.forhonor.com.br/products/porta-algema-coyote?variant=45389921812549",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -518,11 +518,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-mochila-modular-porta-capacete-cordura-1000-olive-green-45389915422789",
-      "name": "Mochila Modular Porta-Capacete Cordura 1000 - OLIVE GREEN",
+      "id": "forhonor-mochila-modular-porta-capacete-multicam-45389915390021",
+      "name": "MOCHILA MODULAR PORTA CAPACETE - MULTICAM",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/mochila-modular-porta-capacete-cordura-1000-olive-green?variant=45389915422789",
+      "url": "https://www.forhonor.com.br/products/mochila-modular-porta-capacete-multicam?variant=45389915390021",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -540,11 +540,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-mochila-modular-porta-capacete-multicam-45389915390021",
-      "name": "MOCHILA MODULAR PORTA CAPACETE - MULTICAM",
+      "id": "forhonor-mochila-modular-porta-capacete-cordura-1000-olive-green-45389915422789",
+      "name": "Mochila Modular Porta-Capacete Cordura 1000 - OLIVE GREEN",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/mochila-modular-porta-capacete-multicam?variant=45389915390021",
+      "url": "https://www.forhonor.com.br/products/mochila-modular-porta-capacete-cordura-1000-olive-green?variant=45389915422789",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -650,11 +650,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-colete-modular-iiia-multicam-45389911031877",
-      "name": "COLETE MODULAR  IIIA - MULTICAM",
+      "id": "forhonor-colete-iiia-pmesp-padrao-internacional-de-tamanhos-cinza-bandeirante-45389904412741",
+      "name": "Colete IIIA PMESP Padrão Internacional de Tamanhos - Cinza Bandeirante",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-multicam?variant=45389911031877",
+      "url": "https://www.forhonor.com.br/products/colete-iiia-pmesp-padrao-internacional-de-tamanhos-cinza-bandeirante?variant=45389904412741",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -672,11 +672,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-colete-modular-iiia-desert-45389894910021",
-      "name": "COLETE MODULAR IIIA - DESERT",
+      "id": "forhonor-colete-iiia-aprovado-padrao-pmmg-black-45389900316741",
+      "name": "COLETE IIIA - APROVADO PADRÃO PMMG / BLACK",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-desert?variant=45389894910021",
+      "url": "https://www.forhonor.com.br/products/colete-iiia-aprovado-padrao-pmmg-black?variant=45389900316741",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -694,11 +694,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-colete-iiia-pmesp-padrao-internacional-de-tamanhos-cinza-bandeirante-45389904412741",
-      "name": "Colete IIIA PMESP Padrão Internacional de Tamanhos - Cinza Bandeirante",
+      "id": "forhonor-colete-iiia-bolso-horizontal-45389923287109",
+      "name": "Colete IIIA + Bolso Horizontal",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-iiia-pmesp-padrao-internacional-de-tamanhos-cinza-bandeirante?variant=45389904412741",
+      "url": "https://www.forhonor.com.br/products/colete-iiia-bolso-horizontal?variant=45389923287109",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -1101,6 +1101,61 @@
       "enabled": true
     },
     {
+      "id": "forhonor-combat-shirt-camutrop-45389917716549",
+      "name": "COMBAT SHIRT CAMUTROP",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-camutrop?variant=45389917716549",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-combat-shirt-711-woodland-45389925744709",
+      "name": "COMBAT SHIRT 711 WOODLAND",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-711-woodland?variant=45389925744709",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-coldre-modular-coyote-45389907296325",
+      "name": "COLDRE MODULAR – COYOTE",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/coldre-modular-coyote?variant=45389907296325",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-colete-modular-iiia-multicam-45389911031877",
+      "name": "COLETE MODULAR  IIIA - MULTICAM",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-multicam?variant=45389911031877",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-colete-modular-iiia-desert-45389894910021",
+      "name": "COLETE MODULAR IIIA - DESERT",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-desert?variant=45389894910021",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
       "id": "forhonor-combat-shirt-711-marinho-45389909393477",
       "name": "COMBAT SHIRT 711 MARINHO",
       "category": "militar",
@@ -1150,50 +1205,6 @@
       "category": "militar",
       "store": "For Honor",
       "url": "https://www.forhonor.com.br/products/colete-modular-iiia-camuflado-multicam?variant=45389908049989",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-combat-shirt-black-45389920370757",
-      "name": "COMBAT SHIRT BLACK",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-black?variant=45389920370757",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-combat-shirt-711-iguard-45389927383109",
-      "name": "COMBAT SHIRT 711 - IGUARD",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-711-iguard?variant=45389927383109",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-porta-algema-coyote-45389921812549",
-      "name": "PORTA ALGEMA - COYOTE",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/porta-algema-coyote?variant=45389921812549",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-colete-iiia-aprovado-padrao-pmmg-black-45389900316741",
-      "name": "COLETE IIIA - APROVADO PADRÃO PMMG / BLACK",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-iiia-aprovado-padrao-pmmg-black?variant=45389900316741",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
