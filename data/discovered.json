@@ -177,11 +177,11 @@
       "enabled": true
     },
     {
-      "id": "kabum-273738",
-      "name": "SSD Kingston Orient A400 240GB, Sata Iii 6GB-s, Leitura 500MB/s e Gravação 350MB/s - Sa400s37/240g",
+      "id": "kabum-202655",
+      "name": "SSD Adata Su650 240GB, Leitura 520 MB/s, Gravação 450MB/s - Asu650ss-240gt-r",
       "category": "tecnologia",
       "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/273738/ssd-kingston-orient-a400-240gb-sata-iii-6gb-s-leitura-500mb-s-e-gravacao-350mb-s-sa400s37-240g",
+      "url": "https://www.kabum.com.br/produto/202655/ssd-adata-su650-240gb-leitura-520-mb-s-gravacao-450mb-s-asu650ss-240gt-r",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -221,11 +221,11 @@
       "enabled": true
     },
     {
-      "id": "kabum-202655",
-      "name": "SSD Adata Su650 240GB, Leitura 520 MB/s, Gravação 450MB/s - Asu650ss-240gt-r",
+      "id": "kabum-273738",
+      "name": "SSD Kingston Orient A400 240GB, Sata Iii 6GB-s, Leitura 500MB/s e Gravação 350MB/s - Sa400s37/240g",
       "category": "tecnologia",
       "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/202655/ssd-adata-su650-240gb-leitura-520-mb-s-gravacao-450mb-s-asu650ss-240gt-r",
+      "url": "https://www.kabum.com.br/produto/273738/ssd-kingston-orient-a400-240gb-sata-iii-6gb-s-leitura-500mb-s-e-gravacao-350mb-s-sa400s37-240g",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -815,22 +815,11 @@
       "enabled": true
     },
     {
-      "id": "kabum-457818",
-      "name": "Placa-Mãe Gigabyte A520M DS3H V2, AMD, Micro ATX, DDR4, Preto - A520M DS3H V2",
+      "id": "kabum-875852",
+      "name": "Placa Mãe Gigabyte B550M DS3H AC R2, AMD AM4, Micro ATX, DDR4, RGB, Wi-Fi, Bluetooth, Preto - B550M DS3H AC R2",
       "category": "tecnologia",
       "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/457818/placa-mae-gigabyte-a520m-ds3h-v2-amd-micro-atx-ddr4-preto-a520m-ds3h-v2",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "kabum-485500",
-      "name": "Controlador De Fan C3tech Gaming RGB - Fh-l100rgb",
-      "category": "tecnologia",
-      "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/485500/controlador-de-fan-c3tech-gaming-rgb-fh-l100rgb",
+      "url": "https://www.kabum.com.br/produto/875852/placa-mae-gigabyte-b550m-ds3h-ac-r2-amd-am4-micro-atx-ddr4-rgb-wi-fi-bluetooth-preto-b550m-ds3h-ac-r2",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -842,6 +831,17 @@
       "category": "tecnologia",
       "store": "KaBuM!",
       "url": "https://www.kabum.com.br/produto/510966/controlador-de-fans-nzxt-v2-rgb-ac-crfr0-b1",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "kabum-485500",
+      "name": "Controlador De Fan C3tech Gaming RGB - Fh-l100rgb",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/485500/controlador-de-fan-c3tech-gaming-rgb-fh-l100rgb",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -958,17 +958,6 @@
       "enabled": true
     },
     {
-      "id": "kabum-510273",
-      "name": "Smartband Smartwatch Xiaomi Mi Band 8 Active, Bluetooth, Tela de  1,47 Polegadas",
-      "category": "tecnologia",
-      "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/510273/smartband-smartwatch-xiaomi-mi-band-8-active-bluetooth-tela-de-1-47-polegadas",
-      "shipping_brl": null,
-      "min_price_brl": "400",
-      "max_price_brl": "1600",
-      "enabled": true
-    },
-    {
       "id": "kabum-955670",
       "name": "Xiaomi Mi Smart Band 10 - M2459b1 ( Rosa Mística ) Tela AmoLED 1,72”, 1500 Nits Água 5 Atm, Hyperos 2.0,",
       "category": "tecnologia",
@@ -991,11 +980,11 @@
       "enabled": true
     },
     {
-      "id": "kabum-1077675",
-      "name": "Smartwatch Xiaomi Smart Band 10 Pro Gps Tela AmoLED Bateria 21 Dias - Preto",
+      "id": "kabum-392828",
+      "name": "Pulseira Xiaomi Smart Mi Band 7 Preto China Com Nfc",
       "category": "tecnologia",
       "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/1077675/smartwatch-xiaomi-smart-band-10-pro-gps-tela-amoled-bateria-21-dias-preto",
+      "url": "https://www.kabum.com.br/produto/392828/pulseira-xiaomi-smart-mi-band-7-preto-china-com-nfc",
       "shipping_brl": null,
       "min_price_brl": "400",
       "max_price_brl": "1600",
@@ -1024,11 +1013,33 @@
       "enabled": true
     },
     {
+      "id": "kabum-1028869",
+      "name": "Xiaomi Smart Band 9 Active (preto) Versão Global",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/1028869/xiaomi-smart-band-9-active-preto-versao-global",
+      "shipping_brl": null,
+      "min_price_brl": "400",
+      "max_price_brl": "1600",
+      "enabled": true
+    },
+    {
       "id": "kabum-734555",
       "name": "Relógio Xiaomi Smart Band 9 Active   Versão Global Cor:preto",
       "category": "tecnologia",
       "store": "KaBuM!",
       "url": "https://www.kabum.com.br/produto/734555/relogio-xiaomi-smart-band-9-active-versao-global-cor-preto",
+      "shipping_brl": null,
+      "min_price_brl": "400",
+      "max_price_brl": "1600",
+      "enabled": true
+    },
+    {
+      "id": "kabum-995957",
+      "name": "Xiaomi Smart Band 10 (m2459b1) Tela AmoLED De 1,72\" Com 60hz, Prata",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/995957/xiaomi-smart-band-10-m2459b1-tela-amoled-de-1-72-com-60hz-prata",
       "shipping_brl": null,
       "min_price_brl": "400",
       "max_price_brl": "1600",
@@ -1095,6 +1106,39 @@
       "category": "tecnologia",
       "store": "KaBuM!",
       "url": "https://www.kabum.com.br/produto/719217/samsung-galaxy-watch-4-classic-stainless-steel-smartwatch-46mm-lte-preto-sm-r895uzkaxaa",
+      "shipping_brl": null,
+      "min_price_brl": "400",
+      "max_price_brl": "1600",
+      "enabled": true
+    },
+    {
+      "id": "kabum-457818",
+      "name": "Placa-Mãe Gigabyte A520M DS3H V2, AMD, Micro ATX, DDR4, Preto - A520M DS3H V2",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/457818/placa-mae-gigabyte-a520m-ds3h-v2-amd-micro-atx-ddr4-preto-a520m-ds3h-v2",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "kabum-510273",
+      "name": "Smartband Smartwatch Xiaomi Mi Band 8 Active, Bluetooth, Tela de  1,47 Polegadas",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/510273/smartband-smartwatch-xiaomi-mi-band-8-active-bluetooth-tela-de-1-47-polegadas",
+      "shipping_brl": null,
+      "min_price_brl": "400",
+      "max_price_brl": "1600",
+      "enabled": true
+    },
+    {
+      "id": "kabum-1077675",
+      "name": "Smartwatch Xiaomi Smart Band 10 Pro Gps Tela AmoLED Bateria 21 Dias - Preto",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/1077675/smartwatch-xiaomi-smart-band-10-pro-gps-tela-amoled-bateria-21-dias-preto",
       "shipping_brl": null,
       "min_price_brl": "400",
       "max_price_brl": "1600",
@@ -1208,17 +1252,6 @@
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "kabum-392828",
-      "name": "Pulseira Xiaomi Smart Mi Band 7 Preto China Com Nfc",
-      "category": "tecnologia",
-      "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/392828/pulseira-xiaomi-smart-mi-band-7-preto-china-com-nfc",
-      "shipping_brl": null,
-      "min_price_brl": "400",
-      "max_price_brl": "1600",
       "enabled": true
     },
     {
