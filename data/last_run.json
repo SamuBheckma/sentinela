@@ -1,17 +1,17 @@
 {
-  "observed_at": "2026-10-19T13:25:17.856717+00:00",
+  "observed_at": "2026-10-19T20:37:59.417067+00:00",
   "summary": {
-    "products": 115,
-    "collected": 109,
+    "products": 116,
+    "collected": 110,
     "failed": 0,
     "unavailable": 6,
     "alerts_sent": 0,
     "alerts_failed": 0,
     "result_messages": 1,
     "result_failures": 0,
-    "published": 5,
-    "eligible": 5,
-    "selected": 5
+    "published": 6,
+    "eligible": 6,
+    "selected": 6
   },
   "sources": {
     "mercadolivre": "requires_login"
