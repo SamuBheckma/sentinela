@@ -28,6 +28,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   monitor:
+    # Na migração, crie a variável de repositório SENTINELA_RUNNER=bot.
+    # Sem ela, o monitor legado continua funcionando normalmente.
+    if: ${{ vars.SENTINELA_RUNNER != 'bot' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
