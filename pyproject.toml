@@ -8,6 +8,7 @@ dependencies = ["requests>=2.32,<3", "beautifulsoup4>=4.12,<5", "python-dotenv>=
 [project.optional-dependencies]
 dev = ["pytest>=8,<10"]
 marketplace = ["playwright>=1.55,<2"]
+bot = ["discord.py>=2.4,<3"]
 
 [project.scripts]
 sentinela = "sentinela.cli:main"
