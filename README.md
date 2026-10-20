@@ -2,6 +2,19 @@
 
 Buscador de produtos e monitor de preços com alertas no Discord. Você escolhe termos como **ssd**, **memoria ram** ou **mochila tatica**; o programa procura produtos, mantém um catálogo automaticamente e acompanha os preços encontrados.
 
+## Bot Discord 24h (nova opção)
+
+Uma implementação com `discord.py` está disponível na branch de desenvolvimento:
+o bot permanece conectado, publica ofertas e responde a `/status`,
+`/buscar` (catálogo salvo), `/ultimas` e `/verificar` (administração).
+
+Consulte **[docs/BOT_DISCORD.md](docs/BOT_DISCORD.md)** para instalação local,
+hospedagem Railway, volume SQLite e migração gradual do GitHub Actions.
+
+**Não rode os dois monitores simultaneamente.** O workflow antigo continua
+ativo por padrão. Só configure `SENTINELA_RUNNER=bot` no GitHub quando o
+novo serviço estiver implantado e validado.
+
 ## Como usar
 
 Requer Python 3.11 ou superior. Execute na raiz do projeto.
