@@ -17,6 +17,13 @@ from .storage import assess, connect, mark_alerted, mark_published, record, was_
 LOG = logging.getLogger(__name__)
 
 
+def _send(sender, *args, publisher=None):
+    """Mantém compatibilidade com os webhooks e testes existentes."""
+    if publisher is None:
+        return sender(*args)
+    return sender(*args, publisher=publisher)
+
+
 @dataclass
 class RunSummary:
     products: int = 0
@@ -58,7 +65,7 @@ def fetch_price(session: requests.Session, product: Product, timeout: int, user_
     return observation.price if observation else None
 
 
-def run(products_file: str, db_path: str, webhook: str | None, min_discount: Decimal, min_samples: int, min_days: int, timeout: int, user_agent: str, dry_run: bool = False, products: list[Product] | None = None, publish_results: bool = False, policy: PublicationPolicy | None = None, observations: dict[str, Observation] | None = None, report_all: bool = False, source_status: dict[str, str] | None = None) -> RunSummary:
+def run(products_file: str, db_path: str, webhook: str | None, min_discount: Decimal, min_samples: int, min_days: int, timeout: int, user_agent: str, dry_run: bool = False, products: list[Product] | None = None, publish_results: bool = False, policy: PublicationPolicy | None = None, observations: dict[str, Observation] | None = None, report_all: bool = False, source_status: dict[str, str] | None = None, publisher=None) -> RunSummary:
     validate_limits(min_discount, min_samples, min_days, timeout)
     products = load_products(products_file) if products is None else products
     summary = RunSummary(products=len(products))
@@ -99,11 +106,11 @@ def run(products_file: str, db_path: str, webhook: str | None, min_discount: Dec
                 baseline, discount = result
                 if dry_run:
                     LOG.info("SIMULAÇÃO: alerta %s (-%.1f%%)", product.id, float(discount * 100))
-                elif not webhook:
+                elif not webhook and publisher is None:
                     LOG.warning("Oferta detectada, mas DISCORD_WEBHOOK_URL não foi definido")
                 else:
                     try:
-                        send_discord(session, webhook, product, price, baseline, discount, timeout)
+                        _send(send_discord, session, webhook, product, price, baseline, discount, timeout, publisher=publisher)
                     except requests.RequestException as exc:
                         summary.alerts_failed += 1
                         LOG.error("Discord falhou (%s); nova tentativa em coleta futura se a oferta continuar elegível", type(exc).__name__)
@@ -126,7 +133,7 @@ def run(products_file: str, db_path: str, webhook: str | None, min_discount: Dec
                     LOG.info("SIMULAÇÃO: %s | %s | %s", candidate.kind, candidate.product.id, brl(candidate.observation.price))
             elif not selected and not report_all:
                 LOG.info("Nenhuma novidade ou mudança elegível; publicação dispensada")
-            elif not webhook:
+            elif not webhook and publisher is None:
                 LOG.warning("Seleção não enviada: DISCORD_WEBHOOK_URL não definido")
             else:
                 def delivered(page):
@@ -138,9 +145,9 @@ def run(products_file: str, db_path: str, webhook: str | None, min_discount: Dec
                             summary.alerts_sent += 1
                 try:
                     if report_all:
-                        summary.result_messages = send_search_results(session, webhook, results, timeout, status)
+                        summary.result_messages = _send(send_search_results, session, webhook, results, timeout, status, publisher=publisher)
                     else:
-                        summary.result_messages = send_candidates(session, webhook, selected, timeout, status, delivered)
+                        summary.result_messages = _send(send_candidates, session, webhook, selected, timeout, status, delivered, publisher=publisher)
                     LOG.info("Seleção publicada no Discord: %d mensagens; %d produtos registrados", summary.result_messages, summary.published)
                 except (requests.RequestException, ValueError) as exc:
                     summary.result_failures += 1
