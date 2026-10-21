@@ -100,11 +100,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-combat-shirt-711-digital-marines-45389935149125",
-      "name": "COMBAT SHIRT 711 DIGITAL MARINES",
+      "id": "forhonor-combat-shirt-716-cinza-bandeirante-pmesp-45389913194565",
+      "name": "COMBAT SHIRT 716 - CINZA BANDEIRANTE PMESP",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marines?variant=45389935149125",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-716-cinza-bandeirante-pmesp?variant=45389913194565",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -144,11 +144,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-combat-shirt-716-cinza-bandeirante-pmesp-45389913194565",
-      "name": "COMBAT SHIRT 716 - CINZA BANDEIRANTE PMESP",
+      "id": "forhonor-combat-shirt-711-digital-marines-45389935149125",
+      "name": "COMBAT SHIRT 711 DIGITAL MARINES",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-716-cinza-bandeirante-pmesp?variant=45389913194565",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-711-digital-marines?variant=45389935149125",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -188,11 +188,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-combat-shirt-camutrop-45389917716549",
-      "name": "COMBAT SHIRT CAMUTROP",
+      "id": "forhonor-combat-shirt-711-marinho-45389909393477",
+      "name": "COMBAT SHIRT 711 MARINHO",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-camutrop?variant=45389917716549",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-711-marinho?variant=45389909393477",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -232,11 +232,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-combat-shirt-711-woodland-45389925744709",
-      "name": "COMBAT SHIRT 711 WOODLAND",
+      "id": "forhonor-combat-shirt-711-camunight-45389909590085",
+      "name": "COMBAT SHIRT 711 CAMUNIGHT",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-711-woodland?variant=45389925744709",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-711-camunight?variant=45389909590085",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -276,11 +276,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-combat-digital-711-urbano-sp-45389923090501",
-      "name": "COMBAT DIGITAL 711  URBANO SP.",
+      "id": "forhonor-combat-shirt-camutrop-45389917716549",
+      "name": "COMBAT SHIRT CAMUTROP",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-digital-711-urbano-sp?variant=45389923090501",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-camutrop?variant=45389917716549",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -342,11 +342,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-gandola-coyote-45389927710789",
-      "name": "GANDOLA COYOTE",
+      "id": "forhonor-porta-lanterna-coyote-45389930594373",
+      "name": "PORTA LANTERNA - COYOTE",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/gandola-coyote?variant=45389927710789",
+      "url": "https://www.forhonor.com.br/products/porta-lanterna-coyote?variant=45389930594373",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -375,11 +375,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-colete-modular-iiia-coyote-45389894254661",
-      "name": "COLETE MODULAR IIIA - COYOTE",
+      "id": "forhonor-camisa-polo-coyote-lisa-45389916471365",
+      "name": "CAMISA POLO COYOTE LISA",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-coyote?variant=45389894254661",
+      "url": "https://www.forhonor.com.br/products/camisa-polo-coyote-lisa?variant=45389916471365",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -408,11 +408,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-porta-lanterna-coyote-45389930594373",
-      "name": "PORTA LANTERNA - COYOTE",
+      "id": "forhonor-gandola-coyote-45389927710789",
+      "name": "GANDOLA COYOTE",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/porta-lanterna-coyote?variant=45389930594373",
+      "url": "https://www.forhonor.com.br/products/gandola-coyote?variant=45389927710789",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -430,22 +430,22 @@
       "enabled": true
     },
     {
-      "id": "kabum-1065965",
-      "name": "SSD Gamer Black 256gb, Sata Iii, 2.5\", Para PC E Notebook",
+      "id": "kabum-726135",
+      "name": "SSD Netac Nv2000 256gb Nvme M.2 2280 Leitura 2500mbs Gravação 1000mbs - Nt01nv2000-256-e4x",
       "category": "tecnologia",
       "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/1065965/ssd-gamer-black-256gb-sata-iii-2-5-para-pc-e-notebook",
+      "url": "https://www.kabum.com.br/produto/726135/ssd-netac-256gb-nv2000-pcie-3-x4-m-2-2280-nvme-ate-2500-1000-mb-s-nt01nv2000-256-e4x",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
       "enabled": true
     },
     {
-      "id": "forhonor-coldre-modular-coyote-45389907296325",
-      "name": "COLDRE MODULAR – COYOTE",
+      "id": "forhonor-bonnie-hat-coyote-45389918896197",
+      "name": "BONNIE HAT - COYOTE",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/coldre-modular-coyote?variant=45389907296325",
+      "url": "https://www.forhonor.com.br/products/bonnie-hat-coyote?variant=45389918896197",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -584,11 +584,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-colete-iiia-dark-navy-marinho-45389900447813",
-      "name": "COLETE IIIA - DARK NAVY (MARINHO)",
+      "id": "forhonor-colete-modular-iiia-black-45389910245445",
+      "name": "COLETE MODULAR IIIA - BLACK",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-iiia-dark-navy-marinho?variant=45389900447813",
+      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-black?variant=45389910245445",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -606,11 +606,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-colete-modular-iiia-black-45389910245445",
-      "name": "COLETE MODULAR IIIA - BLACK",
+      "id": "forhonor-colete-plate-camuflado-multicam-45389935116357",
+      "name": "COLETE PLATE CAMUFLADO MULTICAM",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-black?variant=45389910245445",
+      "url": "https://www.forhonor.com.br/products/colete-plate-camuflado-multicam?variant=45389935116357",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -628,22 +628,22 @@
       "enabled": true
     },
     {
-      "id": "forhonor-colete-plate-camuflado-multicam-45389935116357",
-      "name": "COLETE PLATE CAMUFLADO MULTICAM",
+      "id": "forhonor-colete-iiia-dark-navy-marinho-45389900447813",
+      "name": "COLETE IIIA - DARK NAVY (MARINHO)",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-plate-camuflado-multicam?variant=45389935116357",
+      "url": "https://www.forhonor.com.br/products/colete-iiia-dark-navy-marinho?variant=45389900447813",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
       "enabled": true
     },
     {
-      "id": "kabum-1037468",
-      "name": "Notebook Lenovo IdeaPad Slim 3 AMD Ryzen 5 7535HS, 8GB, AMD Radeon Graphics, SSD 512GB, 15.3\" WUXGA 1920x1200, Linux - 83MMS00300",
+      "id": "kabum-626782",
+      "name": "SSD Husky, 512GB, 2.5\", SATA III, Leitura: 520 MB/s, Gravação: 450 MB/s, Preto - HSSD001512",
       "category": "tecnologia",
       "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/1037468/notebook-lenovo-ideapad-slim-3-amd-ryzen-5-7535hs-8gb-amd-radeon-graphics-ssd-512gb-15-3-wuxga-1920x1200-linux-83mms00300",
+      "url": "https://www.kabum.com.br/produto/626782/ssd-husky-512gb-2-5-sata-iii-leitura-520-mb-s-gravacao-450-mb-s-preto-hssd001512",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -661,11 +661,11 @@
       "enabled": true
     },
     {
-      "id": "kabum-626782",
-      "name": "SSD Husky, 512GB, 2.5\", SATA III, Leitura: 520 MB/s, Gravação: 450 MB/s, Preto - HSSD001512",
+      "id": "kabum-1037468",
+      "name": "Notebook Lenovo IdeaPad Slim 3 AMD Ryzen 5 7535HS, 8GB, AMD Radeon Graphics, SSD 512GB, 15.3\" WUXGA 1920x1200, Linux - 83MMS00300",
       "category": "tecnologia",
       "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/626782/ssd-husky-512gb-2-5-sata-iii-leitura-520-mb-s-gravacao-450-mb-s-preto-hssd001512",
+      "url": "https://www.kabum.com.br/produto/1037468/notebook-lenovo-ideapad-slim-3-amd-ryzen-5-7535hs-8gb-amd-radeon-graphics-ssd-512gb-15-3-wuxga-1920x1200-linux-83mms00300",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -694,11 +694,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-colete-iiia-pmesp-padrao-internacional-de-tamanhos-cinza-bandeirante-45389904412741",
-      "name": "Colete IIIA PMESP Padrão Internacional de Tamanhos - Cinza Bandeirante",
+      "id": "forhonor-colete-modular-iiia-camuflado-multicam-45389908049989",
+      "name": "COLETE MODULAR IIIA - CAMUFLADO MULTICAM",
       "category": "militar",
       "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-iiia-pmesp-padrao-internacional-de-tamanhos-cinza-bandeirante?variant=45389904412741",
+      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-camuflado-multicam?variant=45389908049989",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -1035,11 +1035,11 @@
       "enabled": true
     },
     {
-      "id": "kabum-995957",
-      "name": "Xiaomi Smart Band 10 (m2459b1) Tela AmoLED De 1,72\" Com 60hz, Prata",
+      "id": "kabum-734555",
+      "name": "Relógio Xiaomi Smart Band 9 Active   Versão Global Cor:preto",
       "category": "tecnologia",
       "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/995957/xiaomi-smart-band-10-m2459b1-tela-amoled-de-1-72-com-60hz-prata",
+      "url": "https://www.kabum.com.br/produto/734555/relogio-xiaomi-smart-band-9-active-versao-global-cor-preto",
       "shipping_brl": null,
       "min_price_brl": "400",
       "max_price_brl": "1600",
@@ -1112,6 +1112,83 @@
       "enabled": true
     },
     {
+      "id": "forhonor-combat-shirt-711-woodland-45389925744709",
+      "name": "COMBAT SHIRT 711 WOODLAND",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/combat-shirt-711-woodland?variant=45389925744709",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-combat-digital-711-urbano-sp-45389923090501",
+      "name": "COMBAT DIGITAL 711  URBANO SP.",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/combat-digital-711-urbano-sp?variant=45389923090501",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-colete-modular-iiia-coyote-45389894254661",
+      "name": "COLETE MODULAR IIIA - COYOTE",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-coyote?variant=45389894254661",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "kabum-1065965",
+      "name": "SSD Gamer Black 256gb, Sata Iii, 2.5\", Para PC E Notebook",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/1065965/ssd-gamer-black-256gb-sata-iii-2-5-para-pc-e-notebook",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-coldre-modular-coyote-45389907296325",
+      "name": "COLDRE MODULAR – COYOTE",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/coldre-modular-coyote?variant=45389907296325",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "forhonor-colete-iiia-pmesp-padrao-internacional-de-tamanhos-cinza-bandeirante-45389904412741",
+      "name": "Colete IIIA PMESP Padrão Internacional de Tamanhos - Cinza Bandeirante",
+      "category": "militar",
+      "store": "For Honor",
+      "url": "https://www.forhonor.com.br/products/colete-iiia-pmesp-padrao-internacional-de-tamanhos-cinza-bandeirante?variant=45389904412741",
+      "shipping_brl": null,
+      "min_price_brl": null,
+      "max_price_brl": null,
+      "enabled": true
+    },
+    {
+      "id": "kabum-995957",
+      "name": "Xiaomi Smart Band 10 (m2459b1) Tela AmoLED De 1,72\" Com 60hz, Prata",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/995957/xiaomi-smart-band-10-m2459b1-tela-amoled-de-1-72-com-60hz-prata",
+      "shipping_brl": null,
+      "min_price_brl": "400",
+      "max_price_brl": "1600",
+      "enabled": true
+    },
+    {
       "id": "forhonor-combat-shirt-black-45389920370757",
       "name": "COMBAT SHIRT BLACK",
       "category": "militar",
@@ -1156,33 +1233,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-bonnie-hat-coyote-45389918896197",
-      "name": "BONNIE HAT - COYOTE",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/bonnie-hat-coyote?variant=45389918896197",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
       "id": "forhonor-colete-iiia-bolso-horizontal-45389923287109",
       "name": "Colete IIIA + Bolso Horizontal",
       "category": "militar",
       "store": "For Honor",
       "url": "https://www.forhonor.com.br/products/colete-iiia-bolso-horizontal?variant=45389923287109",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-combat-shirt-711-marinho-45389909393477",
-      "name": "COMBAT SHIRT 711 MARINHO",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-711-marinho?variant=45389909393477",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -1200,28 +1255,6 @@
       "enabled": true
     },
     {
-      "id": "forhonor-combat-shirt-711-camunight-45389909590085",
-      "name": "COMBAT SHIRT 711 CAMUNIGHT",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/combat-shirt-711-camunight?variant=45389909590085",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-camisa-polo-coyote-lisa-45389916471365",
-      "name": "CAMISA POLO COYOTE LISA",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/camisa-polo-coyote-lisa?variant=45389916471365",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
       "id": "kabum-191316",
       "name": "SSD M.2 2280, 256GB, NVME 1.3, Leitura: 1700MB/S, Gravação: 1100MB/S - P300p256gm28",
       "category": "tecnologia",
@@ -1233,33 +1266,11 @@
       "enabled": true
     },
     {
-      "id": "forhonor-colete-modular-iiia-camuflado-multicam-45389908049989",
-      "name": "COLETE MODULAR IIIA - CAMUFLADO MULTICAM",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/colete-modular-iiia-camuflado-multicam?variant=45389908049989",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
       "id": "kabum-1028869",
       "name": "Xiaomi Smart Band 9 Active (preto) Versão Global",
       "category": "tecnologia",
       "store": "KaBuM!",
       "url": "https://www.kabum.com.br/produto/1028869/xiaomi-smart-band-9-active-preto-versao-global",
-      "shipping_brl": null,
-      "min_price_brl": "400",
-      "max_price_brl": "1600",
-      "enabled": true
-    },
-    {
-      "id": "kabum-734555",
-      "name": "Relógio Xiaomi Smart Band 9 Active   Versão Global Cor:preto",
-      "category": "tecnologia",
-      "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/734555/relogio-xiaomi-smart-band-9-active-versao-global-cor-preto",
       "shipping_brl": null,
       "min_price_brl": "400",
       "max_price_brl": "1600",
