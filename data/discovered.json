@@ -89,11 +89,11 @@
       "enabled": true
     },
     {
-      "id": "kabum-384777",
-      "name": "SSD WD Green 240Gb 2,5 7mm Sata 3 - Wds240g3g0a",
+      "id": "kabum-202655",
+      "name": "SSD Adata Su650 240GB, Leitura 520 MB/s, Gravação 450MB/s - Asu650ss-240gt-r",
       "category": "tecnologia",
       "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/384777/ssd-wd-green-240gb-2-5-7mm-sata-3-wds240g3g0a",
+      "url": "https://www.kabum.com.br/produto/202655/ssd-adata-su650-240gb-leitura-520-mb-s-gravacao-450mb-s-asu650ss-240gt-r",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -133,11 +133,11 @@
       "enabled": true
     },
     {
-      "id": "kabum-202655",
-      "name": "SSD Adata Su650 240GB, Leitura 520 MB/s, Gravação 450MB/s - Asu650ss-240gt-r",
+      "id": "kabum-384777",
+      "name": "SSD WD Green 240Gb 2,5 7mm Sata 3 - Wds240g3g0a",
       "category": "tecnologia",
       "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/202655/ssd-adata-su650-240gb-leitura-520-mb-s-gravacao-450mb-s-asu650ss-240gt-r",
+      "url": "https://www.kabum.com.br/produto/384777/ssd-wd-green-240gb-2-5-7mm-sata-3-wds240g3g0a",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
@@ -958,22 +958,22 @@
       "enabled": true
     },
     {
-      "id": "kabum-955670",
-      "name": "Xiaomi Mi Smart Band 10 - M2459b1 ( Rosa Mística ) Tela AmoLED 1,72”, 1500 Nits Água 5 Atm, Hyperos 2.0,",
+      "id": "kabum-955673",
+      "name": "Xiaomi Mi Smart Band 10 - M2459b1 ( Preto ) Tela AmoLED 1,72”, Água De 5 Atm, Hyperos 2.0,",
       "category": "tecnologia",
       "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/955670/xiaomi-mi-smart-band-10-m2459b1-rosa-mistica-tela-amoled-1-72-1500-nits-agua-5-atm-hyperos-2-0-",
+      "url": "https://www.kabum.com.br/produto/955673/xiaomi-mi-smart-band-10-m2459b1-preto-tela-amoled-1-72-agua-de-5-atm-hyperos-2-0-",
       "shipping_brl": null,
       "min_price_brl": "400",
       "max_price_brl": "1600",
       "enabled": true
     },
     {
-      "id": "kabum-510273",
-      "name": "Smartband Smartwatch Xiaomi Mi Band 8 Active, Bluetooth, Tela de  1,47 Polegadas",
+      "id": "kabum-955670",
+      "name": "Xiaomi Mi Smart Band 10 - M2459b1 ( Rosa Mística ) Tela AmoLED 1,72”, 1500 Nits Água 5 Atm, Hyperos 2.0,",
       "category": "tecnologia",
       "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/510273/smartband-smartwatch-xiaomi-mi-band-8-active-bluetooth-tela-de-1-47-polegadas",
+      "url": "https://www.kabum.com.br/produto/955670/xiaomi-mi-smart-band-10-m2459b1-rosa-mistica-tela-amoled-1-72-1500-nits-agua-5-atm-hyperos-2-0-",
       "shipping_brl": null,
       "min_price_brl": "400",
       "max_price_brl": "1600",
@@ -1002,28 +1002,6 @@
       "enabled": true
     },
     {
-      "id": "kabum-734555",
-      "name": "Relógio Xiaomi Smart Band 9 Active   Versão Global Cor:preto",
-      "category": "tecnologia",
-      "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/734555/relogio-xiaomi-smart-band-9-active-versao-global-cor-preto",
-      "shipping_brl": null,
-      "min_price_brl": "400",
-      "max_price_brl": "1600",
-      "enabled": true
-    },
-    {
-      "id": "kabum-1077675",
-      "name": "Smartwatch Xiaomi Smart Band 10 Pro Gps Tela AmoLED Bateria 21 Dias - Preto",
-      "category": "tecnologia",
-      "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/1077675/smartwatch-xiaomi-smart-band-10-pro-gps-tela-amoled-bateria-21-dias-preto",
-      "shipping_brl": null,
-      "min_price_brl": "400",
-      "max_price_brl": "1600",
-      "enabled": true
-    },
-    {
       "id": "kabum-1041278",
       "name": "Relógio Smartwatch Xiaomi Smart Band 10 Pro Gps, Integrado ( Rosa ) Versão Global Compatível Android, Ios",
       "category": "tecnologia",
@@ -1040,6 +1018,28 @@
       "category": "tecnologia",
       "store": "KaBuM!",
       "url": "https://www.kabum.com.br/produto/734558/relogio-xiaomi-smart-band-9-active-versao-global-cor-rosa",
+      "shipping_brl": null,
+      "min_price_brl": "400",
+      "max_price_brl": "1600",
+      "enabled": true
+    },
+    {
+      "id": "kabum-1028869",
+      "name": "Xiaomi Smart Band 9 Active (preto) Versão Global",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/1028869/xiaomi-smart-band-9-active-preto-versao-global",
+      "shipping_brl": null,
+      "min_price_brl": "400",
+      "max_price_brl": "1600",
+      "enabled": true
+    },
+    {
+      "id": "kabum-995957",
+      "name": "Xiaomi Smart Band 10 (m2459b1) Tela AmoLED De 1,72\" Com 60hz, Prata",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/995957/xiaomi-smart-band-10-m2459b1-tela-amoled-de-1-72-com-60hz-prata",
       "shipping_brl": null,
       "min_price_brl": "400",
       "max_price_brl": "1600",
@@ -1106,6 +1106,39 @@
       "category": "tecnologia",
       "store": "KaBuM!",
       "url": "https://www.kabum.com.br/produto/719217/samsung-galaxy-watch-4-classic-stainless-steel-smartwatch-46mm-lte-preto-sm-r895uzkaxaa",
+      "shipping_brl": null,
+      "min_price_brl": "400",
+      "max_price_brl": "1600",
+      "enabled": true
+    },
+    {
+      "id": "kabum-510273",
+      "name": "Smartband Smartwatch Xiaomi Mi Band 8 Active, Bluetooth, Tela de  1,47 Polegadas",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/510273/smartband-smartwatch-xiaomi-mi-band-8-active-bluetooth-tela-de-1-47-polegadas",
+      "shipping_brl": null,
+      "min_price_brl": "400",
+      "max_price_brl": "1600",
+      "enabled": true
+    },
+    {
+      "id": "kabum-734555",
+      "name": "Relógio Xiaomi Smart Band 9 Active   Versão Global Cor:preto",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/734555/relogio-xiaomi-smart-band-9-active-versao-global-cor-preto",
+      "shipping_brl": null,
+      "min_price_brl": "400",
+      "max_price_brl": "1600",
+      "enabled": true
+    },
+    {
+      "id": "kabum-1077675",
+      "name": "Smartwatch Xiaomi Smart Band 10 Pro Gps Tela AmoLED Bateria 21 Dias - Preto",
+      "category": "tecnologia",
+      "store": "KaBuM!",
+      "url": "https://www.kabum.com.br/produto/1077675/smartwatch-xiaomi-smart-band-10-pro-gps-tela-amoled-bateria-21-dias-preto",
       "shipping_brl": null,
       "min_price_brl": "400",
       "max_price_brl": "1600",
@@ -1244,17 +1277,6 @@
       "enabled": true
     },
     {
-      "id": "kabum-995957",
-      "name": "Xiaomi Smart Band 10 (m2459b1) Tela AmoLED De 1,72\" Com 60hz, Prata",
-      "category": "tecnologia",
-      "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/995957/xiaomi-smart-band-10-m2459b1-tela-amoled-de-1-72-com-60hz-prata",
-      "shipping_brl": null,
-      "min_price_brl": "400",
-      "max_price_brl": "1600",
-      "enabled": true
-    },
-    {
       "id": "forhonor-colete-iiia-bolso-horizontal-45389923287109",
       "name": "Colete IIIA + Bolso Horizontal",
       "category": "militar",
@@ -1288,33 +1310,11 @@
       "enabled": true
     },
     {
-      "id": "kabum-1028869",
-      "name": "Xiaomi Smart Band 9 Active (preto) Versão Global",
-      "category": "tecnologia",
-      "store": "KaBuM!",
-      "url": "https://www.kabum.com.br/produto/1028869/xiaomi-smart-band-9-active-preto-versao-global",
-      "shipping_brl": null,
-      "min_price_brl": "400",
-      "max_price_brl": "1600",
-      "enabled": true
-    },
-    {
       "id": "forhonor-combat-shirt-711-iguard-45389927383109",
       "name": "COMBAT SHIRT 711 - IGUARD",
       "category": "militar",
       "store": "For Honor",
       "url": "https://www.forhonor.com.br/products/combat-shirt-711-iguard?variant=45389927383109",
-      "shipping_brl": null,
-      "min_price_brl": null,
-      "max_price_brl": null,
-      "enabled": true
-    },
-    {
-      "id": "forhonor-plate-carrier-g2-coyote-45389898252357",
-      "name": "PLATE CARRIER G2 - COYOTE",
-      "category": "militar",
-      "store": "For Honor",
-      "url": "https://www.forhonor.com.br/products/plate-carrier-g2-coyote?variant=45389898252357",
       "shipping_brl": null,
       "min_price_brl": null,
       "max_price_brl": null,
